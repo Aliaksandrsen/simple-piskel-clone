@@ -1,0 +1,47 @@
+.auth-wrapper {
+  display: flex;
+}
+
+.button__auth {
+  margin: 0 30px 0 20px;
+  padding: 4px 4px;
+}
+
+.pane {
+  padding: 10px 20px 10px;
+  border-radius: 15px;
+  position: absolute;
+  right: 150px;
+  top: 17px;
+}
+
+.remove-button {
+  position: absolute;
+  font-size: 110%;
+  top: 5px;
+  color: darkred;
+  right: 10px;
+  display: block;
+  width: 24px;
+  height: 24px;
+  border: none;
+  outline-style: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.pane_error {
+  background: #f5e1e1;
+  border: solid 2px #df9b9b;
+}
+
+.pane-success {
+  background: #edf5e1;
+  border: solid 2px #c4df9b;
+}
+
+.ava {
+  height: 42px;
+  width: 42px;
+  border-radius: 50%;
+}

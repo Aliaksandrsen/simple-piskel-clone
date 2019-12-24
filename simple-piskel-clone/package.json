@@ -1,0 +1,36 @@
+{
+  "name": "simple-piskel-clone",
+  "version": "1.0.0",
+  "description": "Pack include: HTML, CSS, SCSS, JS, Img, Fonts + eslint",
+  "main": "app.js",
+  "scripts": {
+    "prod": "webpack --mode production",
+    "dev": "webpack --mode development",
+    "dev:watch": "webpack --mode=development --watch",
+    "start": "webpack-dev-server --open",
+    "lint": "eslint ./src",
+    "test": "jest",
+    "testwatch": "jest --watchAll",
+    "coverage:full": "jest --coverage --coverage-reporters=lcov"
+  },
+  "author": "Aliaksandr Senkevich",
+  "license": "MIT",
+  "devDependencies": {
+    "css-loader": "^3.4.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.19.1",
+    "eslint-plugin-jest": "^23.1.1",
+    "file-loader": "^4.3.0",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "jest": "^24.9.0",
+    "jest-cli": "^24.9.0",
+    "mini-css-extract-plugin": "^0.9.0",
+    "node-sass": "^4.13.0",
+    "sass-loader": "^8.0.0",
+    "webpack": "^4.41.4",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.10.1"
+  }
+}
