@@ -96,19 +96,19 @@ function drawLine(x1, y1, x2, y2, color) {
 }
 
 function drawWithpencilMouseup() {
-  if (activeTool === 'pencil') {
+  if (activeTool === 'pencil' || activeTool === 'eraser') {
     isDrawing = false;
   }
 }
 
 function drawWithpencilMouseout() {
-  if (activeTool === 'pencil') {
+  if (activeTool === 'pencil' || activeTool === 'eraser') {
     isDrawing = false;
   }
 }
 
 function drawWithpencilMousemove(e) {
-  if (activeTool === 'pencil') {
+  if (activeTool === 'pencil' || activeTool === 'eraser') {
     if (!isDrawing) return;
     drawLine(
       lastX, lastY, Math.floor(e.offsetX / (512 / canvas.width)),
@@ -120,7 +120,7 @@ function drawWithpencilMousemove(e) {
 }
 
 function drawWithpencilMousedown(e) {
-  if (activeTool === 'pencil') {
+  if (activeTool === 'pencil' || activeTool === 'eraser') {
     isDrawing = true;
     [lastX, lastY] = [
       Math.floor(e.offsetX / (512 / canvas.width)),

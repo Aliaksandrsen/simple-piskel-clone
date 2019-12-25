@@ -1,5 +1,11 @@
-import { fillBucket, fillBucketClick } from './tools/fillBucket/fillBucket';
-// import { drawWithpencil } from './tools/drawWithpencil/drawWithpencil';
+import {
+  fillBucket,
+  fillBucketClick,
+} from './tools/fillBucket/fillBucket';
+import {
+  chooseColor,
+  chooseColorInit,
+} from './tools/chooseColor/chooseColor';
 import {
   drawWithpencil,
   drawWithpencilMousedown,
@@ -7,8 +13,12 @@ import {
   drawWithpencilMouseup,
   drawWithpencilMouseout,
 } from './tools/drawWithpencil/drawWithpencil';
-import { changeResolution32, changeResolution64, changeResolution128 } from './tools/resolution/resolution';
-import { chooseColor, chooseColorInit } from './tools/chooseColor/chooseColor';
+import {
+  changeResolution32,
+  changeResolution64,
+  changeResolution128,
+} from './tools/resolution/resolution';
+
 
 const canvas = document.getElementById('c1');
 const ctx = canvas.getContext('2d');
@@ -39,8 +49,9 @@ const fillBucketHandler = function changingCurrentSelectedToolToFillBucket() {
   activeTool = 'fillBucket';
   // подсветка активного tool
   document.getElementById('fillBucketLabel').classList.add('tools__text_active');
-  document.getElementById('chooseColorlLabel').classList.remove('tools__text_active');
   document.getElementById('pencilLabel').classList.remove('tools__text_active');
+  document.getElementById('eraserLabel').classList.remove('tools__text_active');
+  document.getElementById('chooseColorlLabel').classList.remove('tools__text_active');
   fillBucket();
 };
 document.getElementById('fillBucket').addEventListener('click', fillBucketHandler);
@@ -52,8 +63,9 @@ const chooseColorHandler = function changingCurrentSelectedToolToChooseColor() {
   activeTool = 'chooseColor';
   // подсветка активного tool
   document.getElementById('fillBucketLabel').classList.remove('tools__text_active');
-  document.getElementById('chooseColorlLabel').classList.add('tools__text_active');
   document.getElementById('pencilLabel').classList.remove('tools__text_active');
+  document.getElementById('eraserLabel').classList.remove('tools__text_active');
+  document.getElementById('chooseColorlLabel').classList.add('tools__text_active');
   chooseColor();
 };
 document.getElementById('chooseColor').addEventListener('click', chooseColorHandler);
@@ -65,25 +77,27 @@ const pencilHandler = function changingCurrentSelectedToolToPencil() {
   activeTool = 'pencil';
   // подсветка активного tool
   document.getElementById('fillBucketLabel').classList.remove('tools__text_active');
-  document.getElementById('chooseColorlLabel').classList.remove('tools__text_active');
   document.getElementById('pencilLabel').classList.add('tools__text_active');
+  document.getElementById('eraserLabel').classList.remove('tools__text_active');
+  document.getElementById('chooseColorlLabel').classList.remove('tools__text_active');
   drawWithpencil();
 };
 document.getElementById('pencil').addEventListener('click', pencilHandler);
 
-// !=========================================================================
-// const eraserHandler = function changingCurrentSelectedToolToPencil() {
-//   // очистка всех click EventListeners на canvas
-//   clearEventListeners();
-//   activeTool = 'eraser';
-//   // подсветка активного tool
-//   document.getElementById('fillBucketLabel').classList.remove('tools__text_active');
-//   document.getElementById('chooseColorlLabel').classList.remove('tools__text_active');
-//   document.getElementById('pencilLabel').classList.add('tools__text_active');
-//   drawWithpencil();
-// };
-// document.getElementById('eraser').addEventListener('click', eraserHandler);
-// !=========================================================================
+
+const eraserHandler = function changingCurrentSelectedToolToPencil() {
+  // очистка всех click EventListeners на canvas
+  clearEventListeners();
+  activeTool = 'eraser';
+  // подсветка активного tool
+  document.getElementById('fillBucketLabel').classList.remove('tools__text_active');
+  document.getElementById('pencilLabel').classList.remove('tools__text_active');
+  document.getElementById('eraserLabel').classList.add('tools__text_active');
+  document.getElementById('chooseColorlLabel').classList.remove('tools__text_active');
+  drawWithpencil();
+};
+document.getElementById('eraser').addEventListener('click', eraserHandler);
+
 
 const keysActivation = function keysActivation(event) {
   switch (event.code) {
