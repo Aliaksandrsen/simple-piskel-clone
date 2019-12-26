@@ -5,7 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = {
   mode: 'production',
   entry: {
-    app: './src/app.js',
+    piskel: './src/piskel.js',
     index: './src/index.js',
   },
   output: {
@@ -74,7 +74,7 @@ module.exports = {
       template: './src/screens/canvas/piskel.html',
       filename: './piskel.html',
       // inject: true,
-      chunks: ['app'],
+      chunks: ['piskel'],
     }),
 
     new HtmlWebPackPlugin({

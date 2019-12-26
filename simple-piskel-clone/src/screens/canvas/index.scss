@@ -6,6 +6,14 @@ html {
 
 body {
   margin: 0;
+  min-width: 1024px;
+}
+
+.wrapper {
+  display: flex;
+  min-height: 100%;
+  overflow: hidden;
+  flex-direction: column;
 }
 
 .conteiner {
@@ -13,7 +21,7 @@ body {
   margin: 0 auto;
 }
 
-.header {
+.header__row {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -27,9 +35,11 @@ body {
 .title {
   display: flex;
   font-size: 2rem;
+  margin: 30px;
+  text-transform: uppercase;
 }
 
-.main {
+.main__row {
   display: flex;
   flex-basis: 100%;
 }

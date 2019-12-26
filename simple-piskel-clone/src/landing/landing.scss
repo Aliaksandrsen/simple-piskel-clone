@@ -1,3 +1,136 @@
-h1 {
-    color: blue;
+html {
+  font-size: 10px;
+  font-family: "Trebuchet MS", sans-serif;
+  background: #fffbf3;
+}
+
+body {
+  margin: 0;
+  //   min-width: 1024px;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.conteiner {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.header__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+
+  -webkit-box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.5);
+}
+
+.title {
+  display: flex;
+  font-size: 2rem;
+  margin: 30px;
+  text-transform: uppercase;
+}
+
+.main {
+  flex: 1 1 auto;
+
+  &__column {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.description {
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    padding: 50px;
+  }
+
+  &__title {
+    font-size: 4rem;
+  }
+
+  &__text {
+    font-size: 3rem;
+  }
+
+  &__link {
+    display: inline;
+    font-size: 3rem;
+    text-decoration: none;
+    background-color: rgb(255, 222, 35);
+    color: #000000;
+    padding: 15px;
+    border-radius: 10px;
+  }
+
+  &__image {
+    width: 70%;
+  }
+  &__photo {
+    width: 100%;
+  }
+}
+
+.link {
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #000000;
+}
+
+.examples {
+  &__title {
+    text-align: center;
+    font-size: 4rem;
+  }
+
+  &__text {
+    text-align: center;
+    font-size: 3rem;
+  }
+
+  &__panel {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 20px;
+  }
+
+  &__gif {
+    border: 1px solid black;
+    width: 100%;
+  }
+}
+
+.gif-coteiner {
+  width: 15%;
+}
+
+.footer {
+  background-color: #cccccc;
+
+  &__row {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 65px;
+  }
+
+  &__text {
+    font-size: 1.5rem;
+    line-height: 1.8rem;
+  }
+}
+
+.link_github {
+  font-weight: 700;
 }
