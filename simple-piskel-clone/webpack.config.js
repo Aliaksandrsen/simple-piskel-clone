@@ -4,10 +4,13 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   mode: 'production',
-  entry: './src/app.js',
+  entry: {
+    app: './src/app.js',
+    index: './src/index.js',
+  },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
+    filename: '[name].js',
   },
   module: {
     rules: [
@@ -68,8 +71,17 @@ module.exports = {
 
   plugins: [
     new HtmlWebPackPlugin({
-      template: './src/screens/canvas/index.html',
-      // filename: './index.html',
+      template: './src/screens/canvas/piskel.html',
+      filename: './piskel.html',
+      // inject: true,
+      chunks: ['app'],
+    }),
+
+    new HtmlWebPackPlugin({
+      template: './src/landing/index.html',
+      filename: './index.html',
+      // inject: true,
+      chunks: ['index'],
     }),
 
     new MiniCssExtractPlugin({

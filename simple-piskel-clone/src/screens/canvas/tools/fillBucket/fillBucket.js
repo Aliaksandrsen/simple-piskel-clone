@@ -23,7 +23,7 @@ function fillBucketClick(e) {
 }
 
 function fillBucket() {
-  canvas.addEventListener('click', fillBucketClick);
+  canvas.addEventListener('mousedown', fillBucketClick);
 }
 
 export {

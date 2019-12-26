@@ -1,0 +1,19 @@
+.frames-section {
+  margin-top: 30px;
+  width: 130px;
+}
+
+.button {
+  &_add {
+    width: 130px;
+    height: 32px;
+    text-align: center;
+  }
+}
+
+.canvas {
+  &_frame {
+    height: 128px;
+    width: 128px;
+  }
+}

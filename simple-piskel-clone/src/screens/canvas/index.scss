@@ -8,10 +8,16 @@ body {
   margin: 0;
 }
 
+.conteiner {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
 
   -webkit-box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.5);
@@ -34,7 +40,7 @@ body {
 
 .tools {
   list-style-type: none;
-  margin: 30px 20px;
+  margin: 30px 30px;
   padding: 20px;
 
   -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.5);
@@ -73,7 +79,7 @@ body {
   &__color {
     -webkit-appearance: none;
     padding: 0;
-    border: 2px solid rgb(191, 205, 238);;
+    border: 2px solid rgb(191, 205, 238);
     border-radius: 5px;
     width: 26px;
     height: 26px;
@@ -113,7 +119,7 @@ body {
       background: #000000;
       width: 30px;
       height: 30px;
-      border: 2px solid rgb(191, 205, 238);;
+      border: 2px solid rgb(191, 205, 238);
     }
   }
 }
@@ -121,7 +127,6 @@ body {
 .pencil__unit-size {
   font-size: 1.7rem;
 }
-
 
 .canvas-wrapper {
   display: flex;
@@ -144,19 +149,25 @@ body {
 }
 
 .canvas {
-  margin: 30px;
-  height: 512px;
-  width: 512px;
   image-rendering: pixelated;
   border: 1px solid black;
+  &_main {
+    margin: 30px;
+    height: 512px;
+    width: 512px;
+  }
 }
 
 .button {
   display: inline-flex;
-  padding: 3px 25px;
+  justify-content: center;
   background: #ffffff;
   outline: none;
   border-radius: 5px;
   cursor: pointer;
-}
 
+  &_resolution {
+    padding: 3px 0;
+    width: 60px;
+  }
+}

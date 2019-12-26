@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Simple piskel clone</title>
+    <script src="https://unpkg.com/netlify-auth-providers"></script>
+</head>
+
+<body>
+    <div class="conteiner">
+        <header class="header">
+            <h1 class="title">
+                <img src="./images/nav-icon.svg" alt="navicon">
+                <p>Simple piskel clone</p>
+            </h1>
+            <div id="output"></div>
+            <div class="auth-wrapper">
+                <button id="login" class="button button__auth">
+                    <img src="./images/github.svg" width="30" height="30" alt="github-auth">
+                </button>
+            </div>
+        </header>
+
+        <main class="main">
+            <div class="tools-section">
+
+                <ul class="tools">
+                    <li class="tools__item">
+                        <button id="fillBucket" class="tools__button tools__button_draw" type="button">
+                            <img src="./images/paint-bucket.svg" width="20" height="20" alt="paint-bucket">
+                        </button>
+                        <label id="fillBucketLabel" class="tools__text">Fill bucket</label>
+
+                    </li>
+
+                    <li class="tools__item">
+                        <button id="pencil" class="tools__button tools__button_draw" type="button">
+                            <img src="./images/pencil.svg" width="20" height="20" alt="move">
+                        </button>
+                        <label id="pencilLabel" class="tools__text tools__text_active">Pencil</label>
+
+                        <select id="unitSize" class="pencil__unit-size">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                    </li>
+
+                    <li class="tools__item">
+                        <button id="eraser" class="tools__button tools__button_draw" type="button">
+                            <img src="./images/eraser.svg" width="20" height="20" alt="move">
+                        </button>
+                        <label id="eraserLabel" class="tools__text tools__text_active">Eraser</label>
+                    </li>
+
+                    <li class="tools__item">
+                        <button id="chooseColor" class="tools__button tools__button_draw" type="button">
+                            <img src="./images/choose-color.svg" width="20" height="20" alt="choose-color">
+                        </button>
+                        <label id="chooseColorlLabel" class="tools__text">Choose color</label>
+                    </li>
+
+                    <li class="tools__item">
+                        <input class="tools__color" name="current" type="color" id="current">
+                        <label class="tools__text">Current color</label>
+                    </li>
+
+                    <li class="tools__item">
+                        <button class="tools__button tools__button_circle tools__button_prev" id="prev" name="prev">
+                        </button>
+                        <label class="tools__text">Prev color</label>
+                    </li>
+
+                </ul>
+
+
+                <ul class="tools">
+                    <li class="tools__item">
+                        <button id="Save" class="tools__button tools__button_draw" value="Save">
+                            <img src="./images/save.svg" width="20" height="20" alt="Save">
+                        </button>
+                        <label class="tools__text">Save best picture</label>
+                    </li>
+                    <li class="tools__item">
+                        <button id="Load" class="tools__button tools__button_draw" type="button">
+                            <img src="./images/load.svg" width="20" height="20" alt="Load">
+                        </button>
+                        <label class="tools__text">Load best picture</label>
+                    </li>
+                </ul>
+
+
+            </div>
+
+            <div class="frames-section">
+                <canvas id="c2" class="canvas canvas_frame" width="128" height="128"></canvas>
+                <button id="AddNewFrame" class="button button_add">
+                    Add new frame
+                </button>
+            </div>
+
+            <div class="canvas-wrapper">
+                <canvas class="canvas canvas_main" id="c1" width="512" height="512"></canvas>
+                <div class="canvas-wrapper__panel_down">
+                    <button class="button button_resolution" id="res32">32x32</button>
+                    <button class="button button_resolution" id="res64">64x64</button>
+                    <button class="button button_resolution" id="res128">128x128</button>
+                </div>
+            </div>
+
+        </main>
+    </div>
+</body>
+
+</html>
