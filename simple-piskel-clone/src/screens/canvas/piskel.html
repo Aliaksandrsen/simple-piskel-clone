@@ -103,9 +103,14 @@
 
                     </div>
 
-                    <div class="frames-section">
-                        <canvas id="c2" class="canvas canvas_frame" width="128" height="128"></canvas>
-                        <button id="AddNewFrame" class="button button_add">
+                    <div class="frames-wrapper">
+                        <div class="canvasWrapper">
+                            <canvas id="frame1" class="canvas canvas_frame current-frame" width="128"
+                                height="128"></canvas>
+                            <img class="remove" id="remove" width="30" height="30" src="../frames/images/delete.svg">
+                            <img class="copy" width="30" height="30" src="../frames/images/copy.svg">
+                        </div>
+                        <button id="addNewFrame" class="button button_add">
                             Add new frame
                         </button>
                     </div>

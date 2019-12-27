@@ -3,7 +3,7 @@ const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-  mode: 'production',
+  mode: 'development',
   entry: {
     piskel: './src/piskel.js',
     index: './src/index.js',
@@ -92,6 +92,7 @@ module.exports = {
 
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
+    stats: 'errors-only',
     compress: true,
     port: 3000,
   },

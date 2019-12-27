@@ -1,4 +1,4 @@
-.frames-section {
+.frames-wrapper {
   margin-top: 30px;
   width: 130px;
 }
@@ -15,5 +15,18 @@
   &_frame {
     height: 128px;
     width: 128px;
+    border: 2px solid black;
   }
+}
+
+.current-frame {
+  border: 2px solid orange;
+}
+
+.copy {
+  cursor: pointer;
+}
+
+.remove {
+  cursor: pointer;
 }

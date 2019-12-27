@@ -1,8 +1,134 @@
-document.getElementById('c1').addEventListener('click', () => {
-  const canvas1 = document.getElementById('c1');
-  const canvas2 = document.getElementById('c2');
-  const ctx2 = canvas2.getContext('2d');
-  ctx2.imageSmoothingEnabled = false;
+import deleteSrc from './images/delete.svg';
+import copySrc from './images/copy.svg';
 
-  ctx2.drawImage(canvas1, 0, 0, 128, 128);
+
+const mainCanvas = document.getElementById('c1');
+const framesWrapper = document.querySelector('.frames-wrapper');
+
+
+// ================================================ перенос ресунка с основного канваса на фрейм
+function copyToCurruntFrame() {
+  const currentCanvasFrame = document.querySelector('.current-frame');
+  const ctxCurrentCanvasFrame = currentCanvasFrame.getContext('2d');
+  ctxCurrentCanvasFrame.imageSmoothingEnabled = false;
+
+  // очистка (т.к. bag c изменением resolution)
+  ctxCurrentCanvasFrame
+    .clearRect(0, 0, currentCanvasFrame.width, currentCanvasFrame.height);
+  // перенос ресунка с основного канваса на фрейм
+  ctxCurrentCanvasFrame
+    .drawImage(mainCanvas, 0, 0, currentCanvasFrame.width, currentCanvasFrame.width);
+}
+document.getElementById('c1').addEventListener('click', copyToCurruntFrame);
+// ================================================================================
+
+
+// ================================================================= добавление фрейма
+const newFrameBtn = document.querySelector('#addNewFrame');
+function addFrame() {
+  const ctxMainCanvas = mainCanvas.getContext('2d');
+  ctxMainCanvas.clearRect(0, 0, mainCanvas.width, mainCanvas.height);
+
+  const canvasWrapper = document.createElement('div');
+  canvasWrapper.className = 'canvasWrapper';
+
+  const canvas = document.createElement('canvas');
+  // удаляем класс с текущего
+  if (document.querySelector('.current-frame')) {
+    document.querySelector('.current-frame').classList.remove('current-frame');
+  }
+  canvas.className = 'canvas_frame canvas current-frame';
+
+  canvas.width = '128';
+  canvas.height = '128';
+
+  canvasWrapper.appendChild(canvas);
+  newFrameBtn.before(canvasWrapper);
+  canvasWrapper.insertAdjacentHTML('beforeend',
+    `<img class="remove" width="30" height="30" src=${deleteSrc}>
+     <img class="copy" width="30" height="30" src=${copySrc}>`);
+}
+newFrameBtn.addEventListener('click', addFrame);
+// ================================================================================
+
+
+// ================================================================ удаление фрейма
+function removeFrame() {
+  const remove = document.querySelectorAll('.remove');
+  // ? при удалении current на предыдущий поставаить
+
+  remove.forEach((item) => {
+    if (window.event.target === item) {
+      item.parentNode.remove();
+    }
+  });
+}
+framesWrapper.addEventListener('click', removeFrame);
+// ================================================================================
+
+
+// ========================================================== выбор текущего фрейма
+framesWrapper.addEventListener('click', () => {
+  const framesList = document.querySelectorAll('.canvas_frame');
+
+  framesList.forEach((item) => {
+    if (window.event.target === item) {
+      framesList.forEach((elem) => {
+        elem.classList.remove('current-frame');
+      });
+    }
+  });
 });
+
+
+framesWrapper.addEventListener('click', () => {
+  const framesList = document.querySelectorAll('.canvas_frame');
+
+  framesList.forEach((item) => {
+    if (window.event.target === item) {
+      const ctxMainCanvas = mainCanvas.getContext('2d');
+
+      item.classList.add('current-frame');
+      ctxMainCanvas.clearRect(0, 0, mainCanvas.width, mainCanvas.height);
+      ctxMainCanvas.drawImage(item, 0, 0, mainCanvas.width, mainCanvas.height);
+    }
+  });
+});
+// ===============================================================================
+
+// ========================================================== копирование фрейма
+function copyFrame() {
+  const copy = document.querySelectorAll('.copy');
+
+  copy.forEach((item) => {
+    if (window.event.target === item) {
+      const canvasWrapper = document.createElement('div');
+      canvasWrapper.className = 'canvasWrapper';
+
+      const copyCanvas = document.createElement('canvas');
+
+      // удаляем класс с текущего
+      if (document.querySelector('.current-frame')) {
+        document.querySelector('.current-frame').classList.remove('current-frame');
+      }
+      copyCanvas.className = 'canvas_frame canvas current-frame';
+
+      copyCanvas.width = '128';
+      copyCanvas.height = '128';
+
+      canvasWrapper.appendChild(copyCanvas);
+      newFrameBtn.before(canvasWrapper);
+      canvasWrapper.insertAdjacentHTML('beforeend',
+        `<img class="remove" width="30" height="30" src=${deleteSrc}>
+        <img class="copy" width="30" height="30" src=${copySrc}>`);
+
+
+      const ctxCopyCanvas = copyCanvas.getContext('2d');
+      ctxCopyCanvas.imageSmoothingEnabled = false;
+      ctxCopyCanvas
+        .drawImage(item.parentNode.firstElementChild, 0, 0, copyCanvas.width, copyCanvas.height);
+    }
+  });
+}
+framesWrapper.addEventListener('click', copyFrame);
+// ===============================================================================

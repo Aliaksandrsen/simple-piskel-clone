@@ -4,7 +4,7 @@
   "description": "Pack include: HTML, CSS, SCSS, JS, Img, Fonts + eslint",
   "main": "app.js",
   "scripts": {
-    "prod": "webpack --mode production",
+    "build": "webpack --mode production",
     "dev": "webpack --mode development",
     "watch": "webpack --mode development --watch",
     "start": "webpack-dev-server --open",
