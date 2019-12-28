@@ -41,6 +41,7 @@ body {
 
 .main__row {
   display: flex;
+  justify-content: center;
   flex-basis: 100%;
 }
 
@@ -50,6 +51,7 @@ body {
 
 .tools {
   list-style-type: none;
+  border-radius: 15px;
   margin: 30px 30px;
   padding: 20px;
 
@@ -141,7 +143,7 @@ body {
 .canvas-wrapper {
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
+  // flex-grow: 1;
 }
 
 .canvas-wrapper__panel_up {

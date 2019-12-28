@@ -5,6 +5,14 @@ import copySrc from './images/copy.svg';
 const mainCanvas = document.getElementById('c1');
 const framesWrapper = document.querySelector('.frames-wrapper');
 
+const COLOR_WHITE = '#ffffff';
+// ================================================================ заливка 1 фрейма
+const frame1Canvas = document.getElementById('frame1');
+const ctxFrame1Canvas = frame1Canvas.getContext('2d');
+ctxFrame1Canvas.fillStyle = COLOR_WHITE;
+ctxFrame1Canvas.fillRect(0, 0, frame1Canvas.width, frame1Canvas.height);
+// ================================================================================
+
 
 // ================================================ перенос ресунка с основного канваса на фрейм
 function copyToCurruntFrame() {
@@ -26,8 +34,14 @@ document.getElementById('c1').addEventListener('click', copyToCurruntFrame);
 // ================================================================= добавление фрейма
 const newFrameBtn = document.querySelector('#addNewFrame');
 function addFrame() {
+  // const COLOR_WHITE = '#ffffff';
   const ctxMainCanvas = mainCanvas.getContext('2d');
-  ctxMainCanvas.clearRect(0, 0, mainCanvas.width, mainCanvas.height);
+  // ctxMainCanvas.clearRect(0, 0, mainCanvas.width, mainCanvas.height);
+
+  //! залить
+  ctxMainCanvas.fillStyle = COLOR_WHITE;
+  ctxMainCanvas.fillRect(0, 0, mainCanvas.width, mainCanvas.height);
+
 
   const canvasWrapper = document.createElement('div');
   canvasWrapper.className = 'canvasWrapper';
@@ -41,6 +55,10 @@ function addFrame() {
 
   canvas.width = '128';
   canvas.height = '128';
+  // заливаем белым фрейм
+  const ctxCanvas = canvas.getContext('2d');
+  ctxCanvas.fillStyle = COLOR_WHITE;
+  ctxCanvas.fillRect(0, 0, canvas.width, canvas.height);
 
   canvasWrapper.appendChild(canvas);
   newFrameBtn.before(canvasWrapper);

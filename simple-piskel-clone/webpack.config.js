@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   mode: 'development',
@@ -88,10 +89,19 @@ module.exports = {
       filename: '[name].css',
       // chunkFilename: '[id].css',
     }),
+
+    new CopyPlugin([
+      {
+        from: './src/gifLibrary/gif.worker.js',
+        to: './gif.worker.js',
+        toType: 'file',
+      },
+    ]),
   ],
 
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
+    open: true,
     stats: 'errors-only',
     compress: true,
     port: 3000,

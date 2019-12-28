@@ -6,8 +6,7 @@
   "scripts": {
     "build": "webpack --mode production",
     "dev": "webpack --mode development",
-    "watch": "webpack --mode development --watch",
-    "start": "webpack-dev-server --open",
+    "start": "webpack-dev-server",
     "lint": "eslint ./src",
     "test": "jest",
     "testwatch": "jest --watchAll",
@@ -21,6 +20,7 @@
     "babel-eslint": "^10.0.3",
     "babel-jest": "^24.9.0",
     "babel-loader": "^8.0.6",
+    "copy-webpack-plugin": "^5.1.1",
     "css-loader": "^3.4.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.0.0",
@@ -39,6 +39,7 @@
     "webpack-dev-server": "^3.10.1"
   },
   "dependencies": {
-    "@babel/polyfill": "^7.7.0"
+    "core-js": "^3.6.1",
+    "editorconfig": "^0.15.3"
   }
 }

@@ -1,8 +1,8 @@
 # Instruction
 
-use **"npm run prod"** for compile the project
+use **"npm run build"** for compile the project
 
-use **"npm run start"** for run localhost
+use **"npm run start"** for run devserver
 
 use  **"lint"** for lint
 
