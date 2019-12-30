@@ -14,7 +14,7 @@ const COLOR_BLACK = '#000000';
 
 // colors
 let currentColorHEX = localStorage.getItem('currentColorHEX') || COLOR_GREEN;
-document.getElementById('current').value = currentColorHEX;
+document.querySelector('#current').value = currentColorHEX;
 let prevColorHEX = localStorage.getItem('prevColorHEX') || COLOR_BLACK;
 document.querySelector('.tools__button_prev').style.backgroundColor = prevColorHEX;
 

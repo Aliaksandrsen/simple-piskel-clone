@@ -2,12 +2,12 @@ import deleteSrc from './images/delete.svg';
 import copySrc from './images/copy.svg';
 
 
-const mainCanvas = document.getElementById('c1');
+const mainCanvas = document.querySelector('#c1');
 const framesWrapper = document.querySelector('.frames-wrapper');
 
 const COLOR_WHITE = '#ffffff';
 // ================================================================ заливка 1 фрейма
-const frame1Canvas = document.getElementById('frame1');
+const frame1Canvas = document.querySelector('#frame1');
 const ctxFrame1Canvas = frame1Canvas.getContext('2d');
 ctxFrame1Canvas.fillStyle = COLOR_WHITE;
 ctxFrame1Canvas.fillRect(0, 0, frame1Canvas.width, frame1Canvas.height);

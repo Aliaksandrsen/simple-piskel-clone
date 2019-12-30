@@ -5,6 +5,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="google-signin-scope" content="profile email">
+  <meta name="google-signin-client_id"
+    content="828883537865-n58bu10e30217k99orabq06f0qq5i3be.apps.googleusercontent.com">
   <title>Simple piskel clone</title>
 </head>
 
@@ -17,6 +20,61 @@
           <h1 class="title">
             Simple piskel clone
           </h1>
+          <!--  ===================================================================================  -->
+          <div class="wrapper-auth">
+            <div id="my-signin2"></div>
+          </div>
+
+          <script>
+            let avatar;
+            function onSuccess(googleUser) {
+              // console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
+              const profile = googleUser.getBasicProfile();
+
+              if (document.querySelector('.ava')) { return };
+              function draw() {
+                avatar = new Image();
+                avatar.src = profile.getImageUrl();
+                avatar.classList.add('ava');
+                document.querySelector('.wrapper-auth').prepend(avatar);
+
+                let a = document.createElement('a');
+                a.innerHTML = '<a href="#" class="sign-out" onclick="signOut();">Sign out</a>';
+
+
+                document.querySelector('.wrapper-auth').append(a);
+                document.querySelector('#my-signin2').classList.add('disp-none');
+              }
+              draw();
+            }
+
+            function onFailure(error) {
+              console.log(error);
+            }
+
+            function renderButton() {
+              gapi.signin2.render('my-signin2', {
+                'scope': 'profile email',
+                'width': 240,
+                'height': 50,
+                'longtitle': true,
+                'theme': 'light',
+                'onsuccess': onSuccess,
+                'onfailure': onFailure
+              });
+            }
+
+            function signOut() {
+              const auth2 = gapi.auth2.getAuthInstance();
+              auth2.signOut().then(function () {
+                avatar.remove();
+                document.querySelector('#my-signin2').classList.remove('disp-none');
+                document.querySelector('.sign-out').remove();
+                // console.log('User signed out.');
+              });
+            }
+          </script>
+          <!--  ===================================================================================  -->
         </div>
       </div>
     </header>
@@ -86,7 +144,7 @@
     </footer>
 
   </div>
-
+  <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
 </body>
 
 </html>

@@ -8,7 +8,7 @@ import {
   currentColorRGBA,
 } from '../chooseColor/chooseColor';
 
-const select = document.getElementById('unitSize');
+const select = document.querySelector('#unitSize');
 
 select.addEventListener('change', () => {
   localStorage.setItem('unitSizes', select.value);

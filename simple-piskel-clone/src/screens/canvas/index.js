@@ -20,7 +20,7 @@ import {
 } from './tools/resolution/resolution';
 
 
-const canvas = document.getElementById('c1');
+const canvas = document.querySelector('#c1');
 const ctx = canvas.getContext('2d');
 ctx.imageSmoothingEnabled = false;
 
@@ -48,13 +48,13 @@ const fillBucketHandler = function changingCurrentSelectedToolToFillBucket() {
   clearEventListeners();
   activeTool = 'fillBucket';
   // подсветка активного tool
-  document.getElementById('fillBucketLabel').classList.add('tools__text_active');
-  document.getElementById('pencilLabel').classList.remove('tools__text_active');
-  document.getElementById('eraserLabel').classList.remove('tools__text_active');
-  document.getElementById('chooseColorlLabel').classList.remove('tools__text_active');
+  document.querySelector('#fillBucketLabel').classList.add('tools__text_active');
+  document.querySelector('#pencilLabel').classList.remove('tools__text_active');
+  document.querySelector('#eraserLabel').classList.remove('tools__text_active');
+  document.querySelector('#chooseColorlLabel').classList.remove('tools__text_active');
   fillBucket();
 };
-document.getElementById('fillBucket').addEventListener('click', fillBucketHandler);
+document.querySelector('#fillBucket').addEventListener('click', fillBucketHandler);
 
 
 const chooseColorHandler = function changingCurrentSelectedToolToChooseColor() {
@@ -62,13 +62,13 @@ const chooseColorHandler = function changingCurrentSelectedToolToChooseColor() {
   clearEventListeners();
   activeTool = 'chooseColor';
   // подсветка активного tool
-  document.getElementById('fillBucketLabel').classList.remove('tools__text_active');
-  document.getElementById('pencilLabel').classList.remove('tools__text_active');
-  document.getElementById('eraserLabel').classList.remove('tools__text_active');
-  document.getElementById('chooseColorlLabel').classList.add('tools__text_active');
+  document.querySelector('#fillBucketLabel').classList.remove('tools__text_active');
+  document.querySelector('#pencilLabel').classList.remove('tools__text_active');
+  document.querySelector('#eraserLabel').classList.remove('tools__text_active');
+  document.querySelector('#chooseColorlLabel').classList.add('tools__text_active');
   chooseColor();
 };
-document.getElementById('chooseColor').addEventListener('click', chooseColorHandler);
+document.querySelector('#chooseColor').addEventListener('click', chooseColorHandler);
 
 
 const pencilHandler = function changingCurrentSelectedToolToPencil() {
@@ -76,13 +76,13 @@ const pencilHandler = function changingCurrentSelectedToolToPencil() {
   clearEventListeners();
   activeTool = 'pencil';
   // подсветка активного tool
-  document.getElementById('fillBucketLabel').classList.remove('tools__text_active');
-  document.getElementById('pencilLabel').classList.add('tools__text_active');
-  document.getElementById('eraserLabel').classList.remove('tools__text_active');
-  document.getElementById('chooseColorlLabel').classList.remove('tools__text_active');
+  document.querySelector('#fillBucketLabel').classList.remove('tools__text_active');
+  document.querySelector('#pencilLabel').classList.add('tools__text_active');
+  document.querySelector('#eraserLabel').classList.remove('tools__text_active');
+  document.querySelector('#chooseColorlLabel').classList.remove('tools__text_active');
   drawWithpencil();
 };
-document.getElementById('pencil').addEventListener('click', pencilHandler);
+document.querySelector('#pencil').addEventListener('click', pencilHandler);
 
 
 const eraserHandler = function changingCurrentSelectedToolToPencil() {
@@ -90,13 +90,13 @@ const eraserHandler = function changingCurrentSelectedToolToPencil() {
   clearEventListeners();
   activeTool = 'eraser';
   // подсветка активного tool
-  document.getElementById('fillBucketLabel').classList.remove('tools__text_active');
-  document.getElementById('pencilLabel').classList.remove('tools__text_active');
-  document.getElementById('eraserLabel').classList.add('tools__text_active');
-  document.getElementById('chooseColorlLabel').classList.remove('tools__text_active');
+  document.querySelector('#fillBucketLabel').classList.remove('tools__text_active');
+  document.querySelector('#pencilLabel').classList.remove('tools__text_active');
+  document.querySelector('#eraserLabel').classList.add('tools__text_active');
+  document.querySelector('#chooseColorlLabel').classList.remove('tools__text_active');
   drawWithpencil();
 };
-document.getElementById('eraser').addEventListener('click', eraserHandler);
+document.querySelector('#eraser').addEventListener('click', eraserHandler);
 
 
 const keysActivation = function keysActivation(event) {
@@ -121,21 +121,21 @@ document.addEventListener('keydown', keysActivation);
 
 
 // ============================================================== resizing block
-document.getElementById('res32').addEventListener('click', changeResolution32);
-document.getElementById('res64').addEventListener('click', changeResolution64);
-document.getElementById('res128').addEventListener('click', changeResolution128);
+document.querySelector('#res32').addEventListener('click', changeResolution32);
+document.querySelector('#res64').addEventListener('click', changeResolution64);
+document.querySelector('#res128').addEventListener('click', changeResolution128);
 // =============================================================================
 
 
 // ? нужно ли ==================================================================
 // use localStorage for buttion Save
-document.getElementById('Save').addEventListener('click', () => {
+document.querySelector('#Save').addEventListener('click', () => {
   const data1 = canvas.toDataURL();
   localStorage.setItem('savekey', data1);
 });
 
 // use localStorage for buttion Load
-document.getElementById('Load').addEventListener('click', () => {
+document.querySelector('#Load').addEventListener('click', () => {
   const data2 = localStorage.getItem('savekey');
 
   if (data2 === null) { return; }

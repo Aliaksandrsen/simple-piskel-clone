@@ -4,15 +4,15 @@ const COLOR_WHITE = '#ffffff';
 let timerId;
 const speedAnimation = document.querySelector('#speedAnimation');
 
+// ================================================================ заливка preview
+const animationCanvas1 = document.querySelector('#preview');
+const ctxAnimationCanvas = animationCanvas1.getContext('2d');
+ctxAnimationCanvas.fillStyle = COLOR_WHITE;
+ctxAnimationCanvas.fillRect(0, 0, animationCanvas1.width, animationCanvas1.height);
+// ================================================================================
+
 function getAnimation() {
   clearInterval(timerId);
-  // если 0 прекратить анимацию
-  // if (speedAnimation.value === '0') {
-  //   const animationCanvas = document.querySelector('.canvas_preview');
-  //   const ctx = animationCanvas.getContext('2d');
-  //   ctx.clearRect(0, 0, animationCanvas.width, animationCanvas.height);
-  //   return;
-  // }
   const allFrames = document.querySelectorAll('.canvas_frame');
   let count = 0;
 
@@ -37,16 +37,16 @@ const mainCanvas = document.querySelector('#c1');
 mainCanvas.addEventListener('click', getAnimation);
 speedAnimation.addEventListener('change', getAnimation);
 
-
+// ============================================================= FullScreen
 function getFullScreen() {
   const animationCanvas = document.querySelector('#preview');
   animationCanvas.requestFullscreen();
 }
 const fullScreen = document.querySelector('#fullScreen');
 fullScreen.addEventListener('click', getFullScreen);
+// ========================================================================
 
-
-// todo ================================================ перекинуть
+// ============================================================= SaveGif
 function getGif() {
   let gifUrl;
   const gif = new GIF({
@@ -81,3 +81,7 @@ function getGif() {
 
 const saveGif = document.querySelector('#saveGif');
 saveGif.addEventListener('click', getGif);
+// ========================================================================
+
+
+// ==================================================================== apng
