@@ -9,14 +9,15 @@ import {
   currentColorRGBA,
 } from '../chooseColor/chooseColor';
 
+const CANVAS_PIXEL_SIZE = 512;
 const canvasFloodFiller = new CanvasFloodFiller();
 
 function fillBucketClick(e) {
   if (activeTool === 'fillBucket') {
     canvasFloodFiller.floodFill(
       ctx,
-      Math.floor(e.offsetX / (512 / canvas.width)),
-      Math.floor(e.offsetY / (512 / canvas.height)),
+      Math.floor(e.offsetX / (CANVAS_PIXEL_SIZE / canvas.width)),
+      Math.floor(e.offsetY / (CANVAS_PIXEL_SIZE / canvas.height)),
       currentColorRGBA,
     );
   }

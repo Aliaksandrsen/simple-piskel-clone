@@ -85,3 +85,8 @@ saveGif.addEventListener('click', getGif);
 
 
 // ==================================================================== apng
+
+export {
+  getGif,
+  getFullScreen,
+};

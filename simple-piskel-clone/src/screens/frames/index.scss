@@ -1,13 +1,17 @@
 .frames-wrapper {
-  margin: 30px;
+  margin: 20px;
   width: 130px;
 }
 
 .button {
   &_add {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     width: 130px;
     height: 32px;
-    text-align: center;
+    line-height: 1rem;
+    padding: 0 10px;
   }
 }
 

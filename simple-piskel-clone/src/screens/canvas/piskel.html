@@ -82,17 +82,24 @@
                 <button id="Save" class="tools__button tools__button_draw" value="Save">
                   <img src="./images/save.svg" width="20" height="20" alt="Save">
                 </button>
-                <label class="tools__text">Save best picture</label>
+                <label class="tools__text">Save to buffer</label>
               </li>
               <li class="tools__item">
                 <button id="Load" class="tools__button tools__button_draw" type="button">
                   <img src="./images/load.svg" width="20" height="20" alt="Load">
                 </button>
-                <label class="tools__text">Load best picture</label>
+                <label class="tools__text">Load from buffer</label>
               </li>
             </ul>
 
-
+            <ul class="tools">
+              <li class="tools__item">
+                <button id="hotKeyMenu" class="tools__button tools__button_draw">
+                  <img src="../keyboard/images/keyboard.svg" width="20" height="20" alt="keyboard">
+                </button>
+                <label class="tools__text">Hotkeys</label>
+              </li>
+            </ul>
           </div>
 
           <div class="frames-wrapper">
@@ -102,16 +109,17 @@
               <img class="copy" width="30" height="30" src="../frames/images/copy.svg">
             </div>
             <button id="addNewFrame" class="button button_add">
-              Add new frame
+              <img class="copy" width="30" height="30" src="../frames/images/frame.svg">
+              Add frame
             </button>
           </div>
 
           <div class="canvas-wrapper">
             <canvas class="canvas canvas_main" id="c1" width="512" height="512"></canvas>
             <div class="canvas-wrapper__panel_down">
-              <button class="button button_resolution" id="res32">32x32</button>
-              <button class="button button_resolution" id="res64">64x64</button>
-              <button class="button button_resolution" id="res128">128x128</button>
+              <button class="button button_resolution" data-res="32" id="res32">32x32</button>
+              <button class="button button_resolution" data-res="64" id="res64">64x64</button>
+              <button class="button button_resolution" data-res="128" id="res128">128x128</button>
             </div>
           </div>
 
@@ -122,15 +130,78 @@
                 <input class="range" type="range" id="speedAnimation" name="speed" min="1" max="24" title="FPS">
                 <label class="speedText" for="speed">Speed</label>
               </div>
-              <button class="button button_full-screen" id="fullScreen" type="button">Full screen</button>
-              <button class="button button_save-gif" id="saveGif" type="button">Save .gif</button>
-              <!-- <button class="button button_save-gif" id="saveApng" type="button">Save .apng</button> -->
+              <ul>
+                <li class="tools__item">
+                  <button class="tools__button tools__button_draw" id="fullScreen" type="button">
+                    <img src="../preview/images/fullscreen.svg" width="20" height="20" alt="fullscreen"></button>
+                  <label class="tools__text">Full screen</label>
+                </li>
+                <li class="tools__item">
+                  <button class="tools__button tools__button_draw" id="saveGif" type="button">
+                    <img src="../preview/images/gif.svg" width="20" height="20" alt="gif">
+                  </button>
+                  <label class="tools__text">Save .gif</label>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
       </div>
     </main>
+
+
+    <div class="hotkeys-container hidden" id="hotkeysContainer">
+      <h2 class="hotkeys-title">Keyboard hotkeys</h2>
+      <ul class="hotkeys-list">
+
+        <li class="hotkeys-item">
+          <img src="./images/paint-bucket.svg" width="40" height="40" class="hotkeys-tool" alt="Fill bucket">
+          <input type="text" class="hotkey-input" id="hotkeyFillBucket" maxlength="1" size="1">
+        </li>
+
+        <li class="hotkeys-item">
+          <img src="./images/pencil.svg" width="40" height="40" class="hotkeys-tool" alt="Pencil">
+          <input type="text" class="hotkey-input" id="hotkeyPencil" maxlength="1" size="1">
+        </li>
+
+        <li class="hotkeys-item">
+          <img src="./images/eraser.svg" width="40" height="40" class="hotkeys-tool" alt="Eraser">
+          <input type="text" class="hotkey-input" id="hotkeyEaser" maxlength="1" size="1">
+        </li>
+
+        <li class="hotkeys-item">
+          <img src="./images/choose-color.svg" width="40" height="40" class="hotkeys-tool" alt="Choose color">
+          <input type="text" class="hotkey-input" id="hotkeyChooseColor" maxlength="1" size="1">
+        </li>
+
+
+
+        <li class="hotkeys-item">
+          <img src="./images/save.svg" width="40" height="40" class="hotkeys-tool" alt="Save">
+          <input type="text" class="hotkey-input" id="hotkeySave" maxlength="1" size="1">
+        </li>
+
+        <li class="hotkeys-item">
+          <img src="./images/load.svg" width="40" height="40" class="hotkeys-tool" alt="Load">
+          <input type="text" class="hotkey-input" id="hotkeyLoad" maxlength="1" size="1">
+        </li>
+
+        <li class="hotkeys-item">
+          <img src="../preview/images/fullscreen.svg" width="40" height="40" class="hotkeys-tool" alt="Full screen">
+          <input type="text" class="hotkey-input" id="hotkeyFullScreen" maxlength="1" size="1">
+        </li>
+
+        <li class="hotkeys-item">
+          <img src="../preview/images/gif.svg" width="40" height="40" class="hotkeys-tool" alt="Gif">
+          <input type="text" class="hotkey-input" id="hotkeyGif" maxlength="1" size="1">
+        </li>
+
+      </ul>
+      <img src="../keyboard/images/close.svg" width="30" height="30" id="close" class="hotkeys-close" alt="Close">
+    </div>
   </div>
+
+
 </body>
 
 </html>

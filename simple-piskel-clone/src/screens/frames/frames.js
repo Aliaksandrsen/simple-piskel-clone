@@ -6,7 +6,7 @@ const mainCanvas = document.querySelector('#c1');
 const framesWrapper = document.querySelector('.frames-wrapper');
 
 const COLOR_WHITE = '#ffffff';
-// ================================================================ заливка 1 фрейма
+// ================================================================ заливка 1го фрейма
 const frame1Canvas = document.querySelector('#frame1');
 const ctxFrame1Canvas = frame1Canvas.getContext('2d');
 ctxFrame1Canvas.fillStyle = COLOR_WHITE;
@@ -73,7 +73,6 @@ newFrameBtn.addEventListener('click', addFrame);
 // ================================================================ удаление фрейма
 function removeFrame() {
   const remove = document.querySelectorAll('.remove');
-  // ? при удалении current на предыдущий поставаить
 
   remove.forEach((item) => {
     if (window.event.target === item) {
@@ -114,7 +113,8 @@ framesWrapper.addEventListener('click', () => {
 });
 // ===============================================================================
 
-// ========================================================== копирование фрейма
+
+// ============================================================ копирование фрейма
 function copyFrame() {
   const copy = document.querySelectorAll('.copy');
 
@@ -150,3 +150,8 @@ function copyFrame() {
 }
 framesWrapper.addEventListener('click', copyFrame);
 // ===============================================================================
+
+
+export {
+  addFrame,
+};

@@ -13,11 +13,7 @@ import {
   drawWithpencilMouseup,
   drawWithpencilMouseout,
 } from './tools/drawWithpencil/drawWithpencil';
-import {
-  changeResolution32,
-  changeResolution64,
-  changeResolution128,
-} from './tools/resolution/resolution';
+import changeResolution from './tools/resolution/resolution';
 
 
 const canvas = document.querySelector('#c1');
@@ -99,43 +95,24 @@ const eraserHandler = function changingCurrentSelectedToolToPencil() {
 document.querySelector('#eraser').addEventListener('click', eraserHandler);
 
 
-const keysActivation = function keysActivation(event) {
-  switch (event.code) {
-    case 'KeyB':
-      fillBucketHandler();
-      break;
-
-    case 'KeyP':
-      pencilHandler();
-      break;
-
-    case 'KeyC':
-      chooseColorHandler();
-      break;
-
-    default:
-      break;
-  }
-};
-document.addEventListener('keydown', keysActivation);
-
-
 // ============================================================== resizing block
-document.querySelector('#res32').addEventListener('click', changeResolution32);
-document.querySelector('#res64').addEventListener('click', changeResolution64);
-document.querySelector('#res128').addEventListener('click', changeResolution128);
+document.querySelector('#res32').addEventListener('click', changeResolution);
+document.querySelector('#res64').addEventListener('click', changeResolution);
+document.querySelector('#res128').addEventListener('click', changeResolution);
 // =============================================================================
 
 
 // ? нужно ли ==================================================================
 // use localStorage for buttion Save
-document.querySelector('#Save').addEventListener('click', () => {
+function saveBuffer() {
   const data1 = canvas.toDataURL();
   localStorage.setItem('savekey', data1);
-});
+}
+document.querySelector('#Save').addEventListener('click', saveBuffer);
+
 
 // use localStorage for buttion Load
-document.querySelector('#Load').addEventListener('click', () => {
+function loadBuffer() {
   const data2 = localStorage.getItem('savekey');
 
   if (data2 === null) { return; }
@@ -147,7 +124,8 @@ document.querySelector('#Load').addEventListener('click', () => {
     ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
   };
   img.src = data2;
-});
+}
+document.querySelector('#Load').addEventListener('click', loadBuffer);
 // ? ============================================================================
 
 
@@ -186,10 +164,17 @@ window.addEventListener('load', () => {
   if (activeTool === 'fillBucket') { fillBucketHandler(); }
   if (activeTool === 'chooseColor') { chooseColorHandler(); }
   if (activeTool === 'pencil') { pencilHandler(); }
+  if (activeTool === 'eraser') { eraserHandler(); }
 });
 
 export {
   ctx,
   canvas,
   activeTool,
+  fillBucketHandler,
+  pencilHandler,
+  eraserHandler,
+  chooseColorHandler,
+  saveBuffer,
+  loadBuffer,
 };

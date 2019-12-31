@@ -2,16 +2,19 @@ html {
   font-size: 10px;
   font-family: "Trebuchet MS", sans-serif;
   background: #fffbf3;
+
 }
 
 body {
   margin: 0;
   min-width: 1024px;
+
 }
 
 .wrapper {
   display: flex;
-  min-height: 100%;
+  position: relative;
+  min-height: 100vh;
   overflow: hidden;
   flex-direction: column;
 }
@@ -52,7 +55,7 @@ body {
 .tools {
   list-style-type: none;
   border-radius: 15px;
-  margin: 30px 30px;
+  margin: 20px 20px;
   padding: 20px;
 
   -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.5);
@@ -138,25 +141,29 @@ body {
 
 .pencil__unit-size {
   font-size: 1.7rem;
+  -webkit-appearance: none;
+  appearance: none;
+  outline: 0;
+  box-shadow: none;
+  width: 40px;
+  line-height: 2.2rem;
+  background: rgb(191, 205, 238);
+  overflow: hidden;
+  border-radius: 5px;
+  padding: 0 13px;
+  color: #000000;
+  cursor: pointer;
 }
 
 .canvas-wrapper {
   display: flex;
   flex-direction: column;
-  // flex-grow: 1;
-}
-
-.canvas-wrapper__panel_up {
-  display: flex;
-  justify-content: space-between;
-  margin: 30px 30px 0 30px;
-  width: 514px;
 }
 
 .canvas-wrapper__panel_down {
   display: flex;
-  justify-content: space-around;
-  margin: 0 30px 30px 30px;
+  justify-content: flex-end;
+  margin: 0 20px 20px 20px;
   width: 514px;
 }
 
@@ -164,7 +171,7 @@ body {
   image-rendering: pixelated;
   border: 1px solid black;
   &_main {
-    margin: 30px;
+    margin: 20px;
     height: 512px;
     width: 512px;
   }
@@ -177,6 +184,7 @@ body {
   outline: none;
   border-radius: 5px;
   cursor: pointer;
+  font-family: "Trebuchet MS", sans-serif;
 
   &_resolution {
     padding: 3px 0;

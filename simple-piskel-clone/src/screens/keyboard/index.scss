@@ -1,0 +1,54 @@
+.hotkeys-container {
+  // display: flex;
+  // align-items: center;
+  padding: 10px 20px 10px;
+  border-radius: 15px;
+  position: fixed;
+  // position: relative;
+  right: calc(50% - 275px);
+  top: 30%;
+  z-index: 10;
+  // width: 300px;
+  // height: 320px;
+  font-size: 2rem;
+  text-align: center;
+  background: rgba(100, 100, 100, 0.95);
+  color: #ffffff;
+  transition: opacity 500ms;
+}
+
+.hidden {
+  // transition: visibility 300ms;
+  visibility: hidden;
+  opacity: 0;
+  // transition: opacity 700ms;
+}
+
+.hotkeys-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  list-style: none;
+  width: 550px;
+  height: 120px;
+}
+
+.hotkeys-item {
+  display: flex;
+  padding: 5px 0;
+}
+
+.hotkey-input {
+  margin-left: 10px;
+  height: 35px;
+  font-size: 2rem;
+  padding-left: 10px;
+}
+
+.hotkeys-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  cursor: pointer;
+}

@@ -8,7 +8,8 @@ import {
   currentColorRGBA,
 } from '../chooseColor/chooseColor';
 
-const select = document.querySelector('#unitSize');
+const CANVAS_PIXEL_SIZE = 512;
+const select = document.getElementById('unitSize');
 
 select.addEventListener('change', () => {
   localStorage.setItem('unitSizes', select.value);
@@ -20,17 +21,8 @@ let lastX;
 let lastY;
 
 
-// let unitSizes = document.getElementById('unitSize').value;
-// console.log(unitSizes);
-// let unitSizes = 1;
-// let unitSizes = 2;
-// let unitSizes = 3;
-// let unitSizes = 4;
-
-
 // ставит пиксель цвета с
 function setPixel(x, y, c) {
-  // const p = ctx.createImageData(1, 1); // изначально
   const unitSizes = localStorage.getItem('unitSizes') || '1';
   const p = ctx.createImageData(unitSizes, unitSizes);
 
@@ -40,8 +32,6 @@ function setPixel(x, y, c) {
     p.data[2 + i] = c.b;
     p.data[3 + i] = c.a;
   }
-
-  // ctx.putImageData(p, x, y); // изначально
   ctx.putImageData(p, x, y, 0, 0, unitSizes, unitSizes);
 }
 
@@ -64,14 +54,14 @@ function drawLine(x1, y1, x2, y2, color) {
   const X2 = x2;
   const Y2 = y2;
   if (!isDrawing) return;
-  if (color) {
-    plot.color = color;
-  } else {
-    // цвет по умолчанию - зеленый
-    plot.color = {
-      r: 0, g: 255, b: 0, a: 255,
-    };
-  }
+  // if (color) {
+  plot.color = color;
+  // } else {
+  // цвет по умолчанию - зеленый
+  // plot.color = {
+  // r: 0, g: 255, b: 0, a: 255,
+  // };
+  // }
   const deltaX = Math.abs(X2 - X1);
   const deltaY = Math.abs(Y2 - Y1);
   const signX = X1 < X2 ? 1 : -1;
@@ -111,11 +101,11 @@ function drawWithpencilMousemove(e) {
   if (activeTool === 'pencil' || activeTool === 'eraser') {
     if (!isDrawing) return;
     drawLine(
-      lastX, lastY, Math.floor(e.offsetX / (512 / canvas.width)),
-      Math.floor(e.offsetY / (512 / canvas.height)),
+      lastX, lastY, Math.floor(e.offsetX / (CANVAS_PIXEL_SIZE / canvas.width)),
+      Math.floor(e.offsetY / (CANVAS_PIXEL_SIZE / canvas.height)),
     );
-    lastX = Math.floor(e.offsetX / (512 / canvas.width));
-    lastY = Math.floor(e.offsetY / (512 / canvas.height));
+    lastX = Math.floor(e.offsetX / (CANVAS_PIXEL_SIZE / canvas.width));
+    lastY = Math.floor(e.offsetY / (CANVAS_PIXEL_SIZE / canvas.height));
   }
 }
 
@@ -123,8 +113,8 @@ function drawWithpencilMousedown(e) {
   if (activeTool === 'pencil' || activeTool === 'eraser') {
     isDrawing = true;
     [lastX, lastY] = [
-      Math.floor(e.offsetX / (512 / canvas.width)),
-      Math.floor(e.offsetY / (512 / canvas.height)),
+      Math.floor(e.offsetX / (CANVAS_PIXEL_SIZE / canvas.width)),
+      Math.floor(e.offsetY / (CANVAS_PIXEL_SIZE / canvas.height)),
     ];
     plot(lastX, lastY);
   }

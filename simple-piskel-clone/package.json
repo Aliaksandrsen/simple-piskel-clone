@@ -10,7 +10,8 @@
     "lint": "eslint ./src",
     "test": "jest",
     "testwatch": "jest --watchAll",
-    "coverage:full": "jest --coverage --coverage-reporters=lcov"
+    "coverage:utils": "jest --coverage --coverage-reporters=lcov",
+    "coverage:full": "jest --coverage --collectCoverageFrom=src/**/*.{js,jsx} "
   },
   "author": "Aliaksandr Senkevich",
   "license": "MIT",

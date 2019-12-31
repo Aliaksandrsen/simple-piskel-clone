@@ -2,3 +2,4 @@ dist
 node_modules
 coverage
 src/GIFlibrary
+jest.config.js
