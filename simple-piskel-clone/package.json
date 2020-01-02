@@ -2,7 +2,7 @@
   "name": "simple-piskel-clone",
   "version": "1.0.0",
   "description": "Pack include: HTML, CSS, SCSS, JS, Img, Fonts + eslint",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
     "build": "webpack --mode production",
     "dev": "webpack --mode development",
@@ -41,6 +41,7 @@
   },
   "dependencies": {
     "core-js": "^3.6.1",
-    "editorconfig": "^0.15.3"
+    "editorconfig": "^0.15.3",
+    "sortablejs": "^1.10.2"
   }
 }

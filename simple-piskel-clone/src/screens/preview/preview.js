@@ -2,10 +2,10 @@ import GIF from '../../gifLibrary/gif';
 
 const COLOR_WHITE = '#ffffff';
 let timerId;
-const speedAnimation = document.querySelector('#speedAnimation');
+const speedAnimation = document.getElementById('speedAnimation');
 
-// ================================================================ заливка preview
-const animationCanvas1 = document.querySelector('#preview');
+// ================================================================ fill preview
+const animationCanvas1 = document.getElementById('preview');
 const ctxAnimationCanvas = animationCanvas1.getContext('2d');
 ctxAnimationCanvas.fillStyle = COLOR_WHITE;
 ctxAnimationCanvas.fillRect(0, 0, animationCanvas1.width, animationCanvas1.height);
@@ -33,16 +33,20 @@ function getAnimation() {
   }, 1000 / speedAnimation.value);
 }
 
-const mainCanvas = document.querySelector('#c1');
+const mainCanvas = document.getElementById('c1');
 mainCanvas.addEventListener('click', getAnimation);
 speedAnimation.addEventListener('change', getAnimation);
+// any changes with frames change animation on preview
+document.querySelector('.frames-section').addEventListener('mouseup', getAnimation);
+// on draw pweview
+window.onload = getAnimation;
 
 // ============================================================= FullScreen
 function getFullScreen() {
-  const animationCanvas = document.querySelector('#preview');
+  const animationCanvas = document.getElementById('preview');
   animationCanvas.requestFullscreen();
 }
-const fullScreen = document.querySelector('#fullScreen');
+const fullScreen = document.getElementById('fullScreen');
 fullScreen.addEventListener('click', getFullScreen);
 // ========================================================================
 
@@ -57,7 +61,7 @@ function getGif() {
   });
   const allFrames = document.querySelectorAll('.canvas_frame');
   allFrames.forEach((item) => {
-    const speed = 1000 / document.querySelector('#speedAnimation').value;
+    const speed = 1000 / document.getElementById('speedAnimation').value;
     gif.addFrame(item, { delay: `${speed}` });
   });
 
@@ -79,7 +83,7 @@ function getGif() {
   gif.render();
 }
 
-const saveGif = document.querySelector('#saveGif');
+const saveGif = document.getElementById('saveGif');
 saveGif.addEventListener('click', getGif);
 // ========================================================================
 
@@ -89,4 +93,5 @@ saveGif.addEventListener('click', getGif);
 export {
   getGif,
   getFullScreen,
+  getAnimation,
 };

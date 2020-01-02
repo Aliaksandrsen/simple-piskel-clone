@@ -1,29 +1,38 @@
+import Sortable from 'sortablejs';
 import deleteSrc from './images/delete.svg';
 import copySrc from './images/copy.svg';
-
-
-const mainCanvas = document.querySelector('#c1');
-const framesWrapper = document.querySelector('.frames-wrapper');
+import { getAnimation } from '../preview/preview';
 
 const COLOR_WHITE = '#ffffff';
-// ================================================================ заливка 1го фрейма
-const frame1Canvas = document.querySelector('#frame1');
+const framesWrapper = document.querySelector('.frames-wrapper');
+const mainCanvas = document.getElementById('c1');
+
+// drag-n-drop
+Sortable.create(framesWrapper, {
+  animation: 350,
+  // add callback for preview
+  onSort: getAnimation,
+});
+
+
+// ================================================================ fill first frame
+const frame1Canvas = document.getElementById('frame1');
 const ctxFrame1Canvas = frame1Canvas.getContext('2d');
 ctxFrame1Canvas.fillStyle = COLOR_WHITE;
 ctxFrame1Canvas.fillRect(0, 0, frame1Canvas.width, frame1Canvas.height);
 // ================================================================================
 
 
-// ================================================ перенос ресунка с основного канваса на фрейм
+// ================================================ Transferring the canvas to the frame
 function copyToCurruntFrame() {
   const currentCanvasFrame = document.querySelector('.current-frame');
   const ctxCurrentCanvasFrame = currentCanvasFrame.getContext('2d');
   ctxCurrentCanvasFrame.imageSmoothingEnabled = false;
 
-  // очистка (т.к. bag c изменением resolution)
+  // (because bag with resolution change)
   ctxCurrentCanvasFrame
     .clearRect(0, 0, currentCanvasFrame.width, currentCanvasFrame.height);
-  // перенос ресунка с основного канваса на фрейм
+  // transferring the canvas to the frame
   ctxCurrentCanvasFrame
     .drawImage(mainCanvas, 0, 0, currentCanvasFrame.width, currentCanvasFrame.width);
 }
@@ -31,37 +40,34 @@ document.getElementById('c1').addEventListener('click', copyToCurruntFrame);
 // ================================================================================
 
 
-// ================================================================= добавление фрейма
-const newFrameBtn = document.querySelector('#addNewFrame');
+// ================================================================= add frame
+const newFrameBtn = document.getElementById('addNewFrame');
 function addFrame() {
-  // const COLOR_WHITE = '#ffffff';
+  const frameResolution = '128';
   const ctxMainCanvas = mainCanvas.getContext('2d');
-  // ctxMainCanvas.clearRect(0, 0, mainCanvas.width, mainCanvas.height);
 
-  //! залить
   ctxMainCanvas.fillStyle = COLOR_WHITE;
   ctxMainCanvas.fillRect(0, 0, mainCanvas.width, mainCanvas.height);
 
-
   const canvasWrapper = document.createElement('div');
-  canvasWrapper.className = 'canvasWrapper';
+  canvasWrapper.className = 'canvasWrapper drag-box';
 
   const canvas = document.createElement('canvas');
-  // удаляем класс с текущего
+  // delete class from current
   if (document.querySelector('.current-frame')) {
     document.querySelector('.current-frame').classList.remove('current-frame');
   }
   canvas.className = 'canvas_frame canvas current-frame';
 
-  canvas.width = '128';
-  canvas.height = '128';
-  // заливаем белым фрейм
+  canvas.width = frameResolution;
+  canvas.height = frameResolution;
+  // fill the frame with white
   const ctxCanvas = canvas.getContext('2d');
   ctxCanvas.fillStyle = COLOR_WHITE;
   ctxCanvas.fillRect(0, 0, canvas.width, canvas.height);
 
   canvasWrapper.appendChild(canvas);
-  newFrameBtn.before(canvasWrapper);
+  document.querySelector('.frames-wrapper').append(canvasWrapper);
   canvasWrapper.insertAdjacentHTML('beforeend',
     `<img class="remove" width="30" height="30" src=${deleteSrc}>
      <img class="copy" width="30" height="30" src=${copySrc}>`);
@@ -70,7 +76,7 @@ newFrameBtn.addEventListener('click', addFrame);
 // ================================================================================
 
 
-// ================================================================ удаление фрейма
+// ================================================================ delete frame
 function removeFrame() {
   const remove = document.querySelectorAll('.remove');
 
@@ -84,7 +90,7 @@ framesWrapper.addEventListener('click', removeFrame);
 // ================================================================================
 
 
-// ========================================================== выбор текущего фрейма
+// ========================================================== current frame selection
 framesWrapper.addEventListener('click', () => {
   const framesList = document.querySelectorAll('.canvas_frame');
 
@@ -114,7 +120,7 @@ framesWrapper.addEventListener('click', () => {
 // ===============================================================================
 
 
-// ============================================================ копирование фрейма
+// ============================================================ copy frame
 function copyFrame() {
   const copy = document.querySelectorAll('.copy');
 
@@ -125,7 +131,7 @@ function copyFrame() {
 
       const copyCanvas = document.createElement('canvas');
 
-      // удаляем класс с текущего
+      // delete class from current
       if (document.querySelector('.current-frame')) {
         document.querySelector('.current-frame').classList.remove('current-frame');
       }
@@ -135,7 +141,7 @@ function copyFrame() {
       copyCanvas.height = '128';
 
       canvasWrapper.appendChild(copyCanvas);
-      newFrameBtn.before(canvasWrapper);
+      document.querySelector('.frames-wrapper').append(canvasWrapper);
       canvasWrapper.insertAdjacentHTML('beforeend',
         `<img class="remove" width="30" height="30" src=${deleteSrc}>
         <img class="copy" width="30" height="30" src=${copySrc}>`);
@@ -154,4 +160,5 @@ framesWrapper.addEventListener('click', copyFrame);
 
 export {
   addFrame,
+  copyToCurruntFrame,
 };

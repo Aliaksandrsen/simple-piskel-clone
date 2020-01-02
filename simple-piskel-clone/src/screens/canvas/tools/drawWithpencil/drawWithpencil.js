@@ -15,13 +15,13 @@ select.addEventListener('change', () => {
   localStorage.setItem('unitSizes', select.value);
 });
 
-// flag для ф-ии drawWithpencil (показывает, что находимся в рисовании)
+// flag for drawWithpencil function (shows that we are in drawing)
 let isDrawing = false;
 let lastX;
 let lastY;
 
 
-// ставит пиксель цвета с
+// put pixel color
 function setPixel(x, y, c) {
   const unitSizes = localStorage.getItem('unitSizes') || '1';
   const p = ctx.createImageData(unitSizes, unitSizes);
@@ -35,12 +35,11 @@ function setPixel(x, y, c) {
   ctx.putImageData(p, x, y, 0, 0, unitSizes, unitSizes);
 }
 
-// кисточка - ставит пиксель своего цвета
+// pixel puts its color
 function plot(x, y) {
   const COLOR_WHITE = {
     r: 255, g: 255, b: 255, a: 255,
   };
-  // если стерка
   if (activeTool === 'eraser') {
     setPixel(x, y, COLOR_WHITE);
     return;

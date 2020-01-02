@@ -8,3 +8,4 @@
 | December 27 | December 29 | 12h | preview animation implementation |
 | December 30 | December 30 | 3h | google auth |
 | December 31 | December 31 | 4h | keyboard shortcuts implementation |
+| January 2 | January 2 | 2h | drag & drop (move) frame implementation |

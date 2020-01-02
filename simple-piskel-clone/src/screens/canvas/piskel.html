@@ -102,11 +102,13 @@
             </ul>
           </div>
 
-          <div class="frames-wrapper">
-            <div class="canvasWrapper">
-              <canvas id="frame1" class="canvas canvas_frame current-frame" width="128" height="128"></canvas>
-              <img class="remove" id="remove" width="30" height="30" src="../frames/images/delete.svg">
-              <img class="copy" width="30" height="30" src="../frames/images/copy.svg">
+          <div class="frames-section">
+            <div class="frames-wrapper drag-container">
+              <div id="item1" class="canvasWrapper">
+                <canvas id="frame1" class="canvas_frame canvas current-frame" width="128" height="128"></canvas>
+                <img class="remove" id="remove" width="30" height="30" src="../frames/images/delete.svg">
+                <img class="copy" width="30" height="30" src="../frames/images/copy.svg">
+              </div>
             </div>
             <button id="addNewFrame" class="button button_add">
               <img class="copy" width="30" height="30" src="../frames/images/frame.svg">
@@ -127,7 +129,7 @@
             <div class="preview-wrapper tools">
               <canvas class="canvas canvas_preview" id="preview" width="256" height="256"></canvas>
               <div class="speed-wrapper">
-                <input class="range" type="range" id="speedAnimation" name="speed" min="1" max="24" title="FPS">
+                <input class="range" type="range" id="speedAnimation" name="speed" value="2" min="1" max="24" title="FPS">
                 <label class="speedText" for="speed">Speed</label>
               </div>
               <ul>

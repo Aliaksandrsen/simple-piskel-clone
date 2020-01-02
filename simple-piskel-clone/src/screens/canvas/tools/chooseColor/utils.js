@@ -1,5 +1,4 @@
 function RGBToHex(r, g, b) {
-  // console.log(r, g, b);
   let red = r.toString(16);
   let green = g.toString(16);
   let blue = b.toString(16);
@@ -10,7 +9,6 @@ function RGBToHex(r, g, b) {
 
   if (blue.length === 1) { blue = `0${blue}`; }
 
-  // console.log(`#${red}${green}${blue}`);
   return `#${red}${green}${blue}`;
 }
 

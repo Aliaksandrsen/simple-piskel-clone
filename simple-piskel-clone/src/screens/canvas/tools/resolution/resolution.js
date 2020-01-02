@@ -10,10 +10,9 @@ export default function changeResolution() {
 
   // take from data attributes
   const RESOLUTION = this.dataset.res;
-  console.log(this.dataset.res);
   canvas.width = RESOLUTION;
   canvas.height = RESOLUTION;
-  // use localStorage
+
   localStorage.setItem('resolution', RESOLUTION);
 
   const toDataURLImg1 = localStorage.getItem('lastImage');

@@ -14,15 +14,15 @@ const COLOR_BLACK = '#000000';
 
 // colors
 let currentColorHEX = localStorage.getItem('currentColorHEX') || COLOR_GREEN;
-document.querySelector('#current').value = currentColorHEX;
+document.getElementById('current').value = currentColorHEX;
 let prevColorHEX = localStorage.getItem('prevColorHEX') || COLOR_BLACK;
 document.querySelector('.tools__button_prev').style.backgroundColor = prevColorHEX;
 
-// по умолчанию
+// default
 let currentColorRGBA = JSON.parse(localStorage.getItem('currentColorRGBA')) || {
   r: 0, g: 255, b: 0, a: 255,
 };
-// по умолчанию
+// default
 let prevColorRGBA = JSON.parse(localStorage.getItem('prevColorRGBA')) || {
   r: 0, g: 0, b: 0, a: 255,
 };
@@ -31,20 +31,20 @@ let prevColorRGBA = JSON.parse(localStorage.getItem('prevColorRGBA')) || {
 // !======================= this not a tool (this is for color panel)========================
 
 function changePrevColor() {
-  document.querySelector('#prev').style.backgroundColor = currentColorHEX;
+  document.getElementById('prev').style.backgroundColor = currentColorHEX;
   prevColorHEX = currentColorHEX;
   prevColorRGBA = { ...currentColorRGBA };
 }
 
-document.querySelector('#current').addEventListener('change', () => {
+document.getElementById('current').addEventListener('change', () => {
   changePrevColor();
-  currentColorHEX = document.querySelector('#current').value;
+  currentColorHEX = document.getElementById('current').value;
   currentColorRGBA = hexToRgbA(currentColorHEX);
 });
 
-document.querySelector('#prev').addEventListener('click', () => {
-  // устанавливает значение
-  document.querySelector('#current').value = prevColorHEX;
+document.getElementById('prev').addEventListener('click', () => {
+  // set value
+  document.getElementById('current').value = prevColorHEX;
   const bufCurrentColorHEX = currentColorHEX;
   const bufCurrentColorRGBA = { ...currentColorRGBA };
 
@@ -54,7 +54,7 @@ document.querySelector('#prev').addEventListener('click', () => {
   prevColorHEX = bufCurrentColorHEX;
   prevColorRGBA = { ...bufCurrentColorRGBA };
 
-  document.querySelector('#prev').style.backgroundColor = prevColorHEX;
+  document.getElementById('prev').style.backgroundColor = prevColorHEX;
 });
 
 // !===========================================================================================
@@ -73,7 +73,7 @@ function chooseColorInit(e) {
     const gChanel = pixelData.data[1];
     const bChanel = pixelData.data[2];
 
-    // для внутреннего использования внутни ф-ии
+    // for use inside a function
     const bufCurrentColorHEX = currentColorHEX;
     const bufCurrentColorRGBA = { ...currentColorRGBA };
 
@@ -82,12 +82,12 @@ function chooseColorInit(e) {
       r: `${rChanel}`, g: `${gChanel}`, b: `${bChanel}`, a: '255',
     };
 
-    document.querySelector('#current').value = currentColorHEX;
+    document.getElementById('current').value = currentColorHEX;
 
     prevColorHEX = bufCurrentColorHEX;
     prevColorRGBA = { ...bufCurrentColorRGBA };
 
-    document.querySelector('#prev').style.backgroundColor = prevColorHEX;
+    document.getElementById('prev').style.backgroundColor = prevColorHEX;
   }
 }
 
