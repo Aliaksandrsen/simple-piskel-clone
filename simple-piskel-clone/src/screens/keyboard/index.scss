@@ -31,7 +31,7 @@
   flex-wrap: wrap;
   list-style: none;
   width: 550px;
-  height: 120px;
+  height: 220px;
 }
 
 .hotkeys-item {
@@ -51,4 +51,13 @@
   top: 15px;
   right: 15px;
   cursor: pointer;
+}
+
+.modal__text {
+  color: #2a2a2a;
+  font-weight: 900;
+  font-size: 2.4rem;
+  line-height: 40px;
+  margin: 0;
+  width: 40px;
 }

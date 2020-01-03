@@ -129,7 +129,8 @@
             <div class="preview-wrapper tools">
               <canvas class="canvas canvas_preview" id="preview" width="256" height="256"></canvas>
               <div class="speed-wrapper">
-                <input class="range" type="range" id="speedAnimation" name="speed" value="2" min="1" max="24" title="FPS">
+                <input class="range" type="range" id="speedAnimation" name="speed" value="2" min="1" max="24"
+                  title="FPS">
                 <label class="speedText" for="speed">Speed</label>
               </div>
               <ul>
@@ -168,15 +169,13 @@
 
         <li class="hotkeys-item">
           <img src="./images/eraser.svg" width="40" height="40" class="hotkeys-tool" alt="Eraser">
-          <input type="text" class="hotkey-input" id="hotkeyEaser" maxlength="1" size="1">
+          <input type="text" class="hotkey-input" id="hotkeyEraser" maxlength="1" size="1">
         </li>
 
         <li class="hotkeys-item">
           <img src="./images/choose-color.svg" width="40" height="40" class="hotkeys-tool" alt="Choose color">
           <input type="text" class="hotkey-input" id="hotkeyChooseColor" maxlength="1" size="1">
         </li>
-
-
 
         <li class="hotkeys-item">
           <img src="./images/save.svg" width="40" height="40" class="hotkeys-tool" alt="Save">
@@ -189,6 +188,11 @@
         </li>
 
         <li class="hotkeys-item">
+          <img src="../frames/images/frame.svg" width="40" height="40" class="hotkeys-tool" alt="Load">
+          <input type="text" class="hotkey-input" id="hotkeyAddFrame" maxlength="1" size="1">
+        </li>
+
+        <li class="hotkeys-item">
           <img src="../preview/images/fullscreen.svg" width="40" height="40" class="hotkeys-tool" alt="Full screen">
           <input type="text" class="hotkey-input" id="hotkeyFullScreen" maxlength="1" size="1">
         </li>
@@ -196,6 +200,21 @@
         <li class="hotkeys-item">
           <img src="../preview/images/gif.svg" width="40" height="40" class="hotkeys-tool" alt="Gif">
           <input type="text" class="hotkey-input" id="hotkeyGif" maxlength="1" size="1">
+        </li>
+
+        <li class="hotkeys-item">
+          <p class="modal__text">32 </p>
+          <input type="text" class="hotkey-input" id="hotkeyRes1" maxlength="1" size="1">
+        </li>
+
+        <li class="hotkeys-item">
+          <p class="modal__text">64</p>
+          <input type="text" class="hotkey-input" id="hotkeyRes2" maxlength="1" size="1">
+        </li>
+
+        <li class="hotkeys-item">
+          <p class="modal__text">128</p>
+          <input type="text" class="hotkey-input" id="hotkeyRes3" maxlength="1" size="1">
         </li>
 
       </ul>
