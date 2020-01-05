@@ -1,4 +1,4 @@
-import { RGBToHex, hexToRgbA } from './utils';
+import { RGBToHex, hexToRgbA, calculateCoordinates } from './utils';
 
 
 describe('RGB color to HEX color', () => {
@@ -37,5 +37,17 @@ describe('HEX color to RGB color', () => {
     expect(hexToRgbA('#ff0000')).toEqual({
       r: 255, g: 0, b: 0, a: 255,
     });
+  });
+});
+
+
+describe('calculate coordinates X and Y', () => {
+  test('undefined', () => {
+    expect(calculateCoordinates(218, 346, 512, 128, 128)).toBeDefined();
+  });
+  test('should return X and Y', () => {
+    expect(calculateCoordinates(426, 231, 512, 128, 128)).toEqual([106, 57]);
+    expect(calculateCoordinates(159, 74, 512, 128, 128)).toEqual([39, 18]);
+    expect(calculateCoordinates(486, 375, 512, 32, 32)).toEqual([30, 23]);
   });
 });

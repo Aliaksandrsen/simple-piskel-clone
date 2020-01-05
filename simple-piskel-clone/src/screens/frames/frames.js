@@ -3,7 +3,12 @@ import deleteSrc from './images/delete.svg';
 import copySrc from './images/copy.svg';
 import { getAnimation } from '../preview/preview';
 
-const COLOR_WHITE = '#ffffff';
+import {
+  CANVAS_FRAMES_PIXEL_SIZE,
+  COLOR_WHITE,
+} from '../../constants';
+
+
 const framesWrapper = document.querySelector('.frames-wrapper');
 const mainCanvas = document.getElementById('c1');
 
@@ -43,7 +48,7 @@ document.getElementById('c1').addEventListener('click', copyToCurruntFrame);
 // ================================================================= add frame
 const newFrameBtn = document.getElementById('addNewFrame');
 function addFrame() {
-  const frameResolution = '128';
+  const frameResolution = CANVAS_FRAMES_PIXEL_SIZE;
   const ctxMainCanvas = mainCanvas.getContext('2d');
 
   ctxMainCanvas.fillStyle = COLOR_WHITE;
@@ -81,9 +86,7 @@ function removeFrame() {
   const remove = document.querySelectorAll('.remove');
 
   remove.forEach((item) => {
-    if (window.event.target === item) {
-      item.parentNode.remove();
-    }
+    if (window.event.target === item) { item.parentNode.remove(); }
   });
 }
 framesWrapper.addEventListener('click', removeFrame);
@@ -137,8 +140,8 @@ function copyFrame() {
       }
       copyCanvas.className = 'canvas_frame canvas current-frame';
 
-      copyCanvas.width = '128';
-      copyCanvas.height = '128';
+      copyCanvas.width = CANVAS_FRAMES_PIXEL_SIZE;
+      copyCanvas.height = CANVAS_FRAMES_PIXEL_SIZE;
 
       canvasWrapper.appendChild(copyCanvas);
       document.querySelector('.frames-wrapper').append(canvasWrapper);

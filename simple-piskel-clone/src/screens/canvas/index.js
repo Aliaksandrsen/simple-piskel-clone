@@ -15,12 +15,13 @@ import {
 } from './tools/drawWithpencil/drawWithpencil';
 import changeResolution from './tools/resolution/resolution';
 import { copyToCurruntFrame } from '../frames/frames';
+import { STANDART_RESOLUTION, CANVAS_PIXEL_SIZE } from '../../constants';
+
 
 const canvas = document.getElementById('c1');
 const ctx = canvas.getContext('2d');
 ctx.imageSmoothingEnabled = false;
 
-const STANDART_RESOLUTION = '32';
 canvas.width = localStorage.getItem('resolution') || STANDART_RESOLUTION;
 canvas.height = localStorage.getItem('resolution') || STANDART_RESOLUTION;
 
@@ -148,7 +149,7 @@ window.addEventListener('load', () => {
 
   const img = new Image();
   img.onload = () => {
-    ctx.clearRect(0, 0, 512, 512);
+    ctx.clearRect(0, 0, CANVAS_PIXEL_SIZE, CANVAS_PIXEL_SIZE);
     ctx.imageSmoothingEnabled = false;
     ctx.drawImage(img, 0, 0);
     // drow first frame

@@ -22,4 +22,12 @@ function hexToRgbA(hex) {
   };
 }
 
-export { RGBToHex, hexToRgbA };
+function calculateCoordinates(eventOffsetX, eventOffsetY, canvasSize, canvasWidth, canvasHeight) {
+  const arr = [
+    Math.floor(eventOffsetX / (canvasSize / canvasWidth)),
+    Math.floor(eventOffsetY / (canvasSize / canvasHeight)),
+  ];
+  return arr;
+}
+
+export { RGBToHex, hexToRgbA, calculateCoordinates };

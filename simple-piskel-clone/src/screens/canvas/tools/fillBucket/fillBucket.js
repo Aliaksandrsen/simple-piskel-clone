@@ -9,7 +9,9 @@ import {
   currentColorRGBA,
 } from '../chooseColor/chooseColor';
 
-const CANVAS_PIXEL_SIZE = 512;
+import { CANVAS_PIXEL_SIZE } from '../../../../constants';
+
+
 const canvasFloodFiller = new CanvasFloodFiller();
 
 function fillBucketClick(e) {

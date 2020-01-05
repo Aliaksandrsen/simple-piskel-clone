@@ -1,6 +1,7 @@
 import GIF from '../../gifLibrary/gif';
+import { COLOR_WHITE } from '../../constants';
 
-const COLOR_WHITE = '#ffffff';
+
 let timerId;
 const speedAnimation = document.getElementById('speedAnimation');
 
@@ -26,9 +27,7 @@ function getAnimation() {
       ctx.drawImage(allFrames[count], 0, 0, animationCanvas.width, animationCanvas.height);
 
       count += 1;
-      if (count === allFrames.length) {
-        count = 0;
-      }
+      if (count === allFrames.length) { count = 0; }
     }
   }, 1000 / speedAnimation.value);
 }
@@ -41,6 +40,7 @@ document.querySelector('.frames-section').addEventListener('mouseup', getAnimati
 // on draw pweview
 window.onload = getAnimation;
 
+
 // ============================================================= FullScreen
 function getFullScreen() {
   const animationCanvas = document.getElementById('preview');
@@ -49,6 +49,7 @@ function getFullScreen() {
 const fullScreen = document.getElementById('fullScreen');
 fullScreen.addEventListener('click', getFullScreen);
 // ========================================================================
+
 
 // ============================================================= SaveGif
 function getGif() {
@@ -87,8 +88,6 @@ const saveGif = document.getElementById('saveGif');
 saveGif.addEventListener('click', getGif);
 // ========================================================================
 
-
-// ==================================================================== apng
 
 export {
   getGif,

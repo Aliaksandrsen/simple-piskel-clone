@@ -4,11 +4,10 @@ import {
   activeTool,
 } from '../../index';
 
-import {
-  currentColorRGBA,
-} from '../chooseColor/chooseColor';
+import { currentColorRGBA } from '../chooseColor/chooseColor';
+import { CANVAS_PIXEL_SIZE } from '../../../../constants';
 
-const CANVAS_PIXEL_SIZE = 512;
+
 const select = document.getElementById('unitSize');
 
 select.addEventListener('change', () => {
@@ -52,15 +51,10 @@ function drawLine(x1, y1, x2, y2, color) {
   let Y1 = y1;
   const X2 = x2;
   const Y2 = y2;
+
   if (!isDrawing) return;
-  // if (color) {
+
   plot.color = color;
-  // } else {
-  // цвет по умолчанию - зеленый
-  // plot.color = {
-  // r: 0, g: 255, b: 0, a: 255,
-  // };
-  // }
   const deltaX = Math.abs(X2 - X1);
   const deltaY = Math.abs(Y2 - Y1);
   const signX = X1 < X2 ? 1 : -1;
@@ -73,27 +67,17 @@ function drawLine(x1, y1, x2, y2, color) {
     plot(X1, Y1);
     const error2 = error * 2;
 
-    if (error2 > -deltaY) {
-      error -= deltaY;
-      X1 += signX;
-    }
-    if (error2 < deltaX) {
-      error += deltaX;
-      Y1 += signY;
-    }
+    if (error2 > -deltaY) { error -= deltaY; X1 += signX; }
+    if (error2 < deltaX) { error += deltaX; Y1 += signY; }
   }
 }
 
 function drawWithpencilMouseup() {
-  if (activeTool === 'pencil' || activeTool === 'eraser') {
-    isDrawing = false;
-  }
+  if (activeTool === 'pencil' || activeTool === 'eraser') { isDrawing = false; }
 }
 
 function drawWithpencilMouseout() {
-  if (activeTool === 'pencil' || activeTool === 'eraser') {
-    isDrawing = false;
-  }
+  if (activeTool === 'pencil' || activeTool === 'eraser') { isDrawing = false; }
 }
 
 function drawWithpencilMousemove(e) {

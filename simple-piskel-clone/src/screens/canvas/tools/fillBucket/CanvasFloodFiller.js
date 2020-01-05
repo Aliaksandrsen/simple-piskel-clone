@@ -44,10 +44,8 @@ export default class CanvasFloodFiller {
       this.rA = toReplace.a;
 
       // Всё зависнет если цвета совпадают
-      if (+this.rR === +this.nR
-        && +this.rG === +this.nG
-        && +this.rB === +this.nB
-        && +this.rA === +this.nA) {
+      if (+this.rR === +this.nR && +this.rG === +this.nG
+        && +this.rB === +this.nB && +this.rA === +this.nA) {
         return;
       }
       this.effectiveFill(x, y);
@@ -77,7 +75,6 @@ export default class CanvasFloodFiller {
         lx = -1 + lx;
         dCoord -= 4;
       }
-
       return lx + 1;
     };
 

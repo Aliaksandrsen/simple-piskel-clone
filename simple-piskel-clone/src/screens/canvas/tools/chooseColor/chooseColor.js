@@ -7,10 +7,15 @@ import {
 import {
   RGBToHex,
   hexToRgbA,
-} from './utils';
+  calculateCoordinates,
+} from '../../../utils/utils';
 
-const COLOR_GREEN = '#00ff00';
-const COLOR_BLACK = '#000000';
+import {
+  CANVAS_PIXEL_SIZE,
+  COLOR_GREEN,
+  COLOR_BLACK,
+} from '../../../../constants';
+
 
 // colors
 let currentColorHEX = localStorage.getItem('currentColorHEX') || COLOR_GREEN;
@@ -59,13 +64,16 @@ document.getElementById('prev').addEventListener('click', () => {
 
 // !===========================================================================================
 
-
 function chooseColorInit(e) {
   if (activeTool === 'chooseColor') {
-    const [X, Y] = [
-      Math.floor(e.offsetX / (512 / canvas.width)),
-      Math.floor(e.offsetY / (512 / canvas.height)),
-    ];
+    // return X and Y coordinates
+    const [X, Y] = calculateCoordinates(
+      e.offsetX,
+      e.offsetY,
+      CANVAS_PIXEL_SIZE,
+      canvas.width,
+      canvas.height,
+    );
 
     const pixelData = ctx.getImageData(X, Y, 1, 1);
 
