@@ -6,7 +6,7 @@ import {
   saveBuffer,
   loadBuffer,
 } from '../canvas/index';
-import { getGif, getFullScreen } from '../preview/preview';
+import { getGif, getApng, getFullScreen } from '../preview/preview';
 import { addFrame } from '../frames/frames';
 
 const startKeyMap = {
@@ -17,8 +17,10 @@ const startKeyMap = {
   hotkeyAddFrame: 'a',
   hotkeySave: 's',
   hotkeyLoad: 'l',
+  hotkeyKeyboard: 'k',
   hotkeyFullScreen: 'f',
   hotkeyGif: 'g',
+  hotkeyApng: 'n',
   hotkeyRes1: '1',
   hotkeyRes2: '2',
   hotkeyRes3: '3',
@@ -31,8 +33,10 @@ const hotkeyChooseColor = document.getElementById('hotkeyChooseColor');
 const hotkeyAddFrame = document.getElementById('hotkeyAddFrame');
 const hotkeySave = document.getElementById('hotkeySave');
 const hotkeyLoad = document.getElementById('hotkeyLoad');
+const hotkeyKeyboard = document.getElementById('hotkeyKeyboard');
 const hotkeyFullScreen = document.getElementById('hotkeyFullScreen');
 const hotkeyGif = document.getElementById('hotkeyGif');
+const hotkeyApng = document.getElementById('hotkeyApng');
 const hotkeyRes1 = document.getElementById('hotkeyRes1');
 const hotkeyRes2 = document.getElementById('hotkeyRes2');
 const hotkeyRes3 = document.getElementById('hotkeyRes3');
@@ -44,8 +48,10 @@ hotkeyChooseColor.value = startKeyMap.hotkeyChooseColor;
 hotkeyAddFrame.value = startKeyMap.hotkeyAddFrame;
 hotkeySave.value = startKeyMap.hotkeySave;
 hotkeyLoad.value = startKeyMap.hotkeyLoad;
+hotkeyKeyboard.value = startKeyMap.hotkeyKeyboard;
 hotkeyFullScreen.value = startKeyMap.hotkeyFullScreen;
 hotkeyGif.value = startKeyMap.hotkeyGif;
+hotkeyApng.value = startKeyMap.hotkeyApng;
 hotkeyRes1.value = startKeyMap.hotkeyRes1;
 hotkeyRes2.value = startKeyMap.hotkeyRes2;
 hotkeyRes3.value = startKeyMap.hotkeyRes3;
@@ -81,12 +87,20 @@ const keysActivation = function keysActivation(event) {
       getGif();
       break;
 
+    case hotkeyApng.value:
+      getApng();
+      break;
+
     case hotkeySave.value:
       saveBuffer();
       break;
 
     case hotkeyLoad.value:
       loadBuffer();
+      break;
+
+    case hotkeyKeyboard.value:
+      document.getElementById('hotKeyMenu').click();
       break;
 
     case hotkeyRes1.value:

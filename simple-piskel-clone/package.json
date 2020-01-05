@@ -42,7 +42,9 @@
   },
   "dependencies": {
     "core-js": "^3.6.1",
+    "downloadjs": "^1.4.7",
     "editorconfig": "^0.15.3",
-    "sortablejs": "^1.10.2"
+    "sortablejs": "^1.10.2",
+    "upng-js": "^2.1.0"
   }
 }
