@@ -1,16 +1,13 @@
 export default class CanvasFloodFiller {
-  // Ширина и высота
   constructor() {
     this.cWidth = -1;
     this.cHeight = -1;
 
-    // Заменяемый цвет
     this.rR = '0';
     this.rG = '0';
     this.rB = '0';
     this.rA = '0';
 
-    // Цвет закраски
     this.nR = '0';
     this.nG = '0';
     this.nB = '0';
@@ -18,12 +15,6 @@ export default class CanvasFloodFiller {
 
     this.data = null;
 
-    /**
-     * Выполняет заливку
-     * canvasContext - контекст
-     * x, y - координаты точки заливки
-     * color - цвет заливки
-     */
     this.floodFill = function floodFill(canvasContext, x, y, color) {
       this.cWidth = canvasContext.canvas.width;
       this.cHeight = canvasContext.canvas.height;
@@ -43,7 +34,6 @@ export default class CanvasFloodFiller {
       this.rB = toReplace.b;
       this.rA = toReplace.a;
 
-      // Всё зависнет если цвета совпадают
       if (+this.rR === +this.nR && +this.rG === +this.nG
         && +this.rB === +this.nB && +this.rA === +this.nA) {
         return;
@@ -53,15 +43,7 @@ export default class CanvasFloodFiller {
       canvasContext.putImageData(idata, 0, 0);
     };
 
-    /**
-     * Найти левый пиксель, по пути закрашивая все попавшиеся
-     */
     this.findLeftPixel = function findLeftPixel(x, y) {
-      /**
-       * Крутим пикселы влево, заодно красим. Возвращаем левую границу.
-       * Во избежание дубляжа и ошибок, findLeftPixel НЕ красит текущий
-       * пиксел! Это сделает обязательный поиск вправо.
-       */
       let lx = x - 1;
       let dCoord = (y * this.cWidth * 4) + (lx * 4);
 
@@ -78,7 +60,6 @@ export default class CanvasFloodFiller {
       return lx + 1;
     };
 
-    // Найти правый пиксель, по пути закрашивая все попавшиеся
     this.findRightPixel = function findRightPixel(x, y) {
       let rx = x;
       let dCoord = (y * this.cWidth * 4) + (x * 4);
@@ -97,7 +78,6 @@ export default class CanvasFloodFiller {
       return rx - 1;
     };
 
-    // Пиксель по координатам x,y - готовый к заливке?
     this.isNeededPixel = function isNeededPixel(x, y) {
       const dstart = (y * this.cWidth * 4) + (x * 4);
       const dr = this.data[dstart];
@@ -109,9 +89,8 @@ export default class CanvasFloodFiller {
     };
   }
 
-  // Получить точку из данных
+
   getDot(x, y) {
-    // Точка: y * ширину * 4 + (x * 4)
     const dstart = (y * this.cWidth * 4) + (x * 4);
     const dr = this.data[dstart];
     const dg = this.data[dstart + 1];
@@ -126,7 +105,6 @@ export default class CanvasFloodFiller {
     };
   }
 
-  // Эффективная (строчная) заливка
   effectiveFill(cx, cy) {
     const lineQueue = [];
 
@@ -141,15 +119,9 @@ export default class CanvasFloodFiller {
       let nx2 = cLine.x1;
       let currx = nx2;
 
-      /**
-       *Сперва для первого пиксела, если верхний над ним цвет подходит,
-       *пускаем поиск левой границы.
-       *Можно искать вверх?
-       */
+
       if (cLine.y > 0) {
-        // Сверху строка может идти левее текущей?
         if (this.isNeededPixel(cLine.x1, cLine.y - 1)) {
-          // Ищем в том числе влево
           nx1 = this.findLeftPixel(cLine.x1, cLine.y - 1);
           nx2 = this.findRightPixel(cLine.x1, cLine.y - 1);
           lineQueue.push({ x1: nx1, x2: nx2, y: cLine.y - 1 });
@@ -157,19 +129,13 @@ export default class CanvasFloodFiller {
 
         currx = nx2;
 
-        /**
-         * Добираем недостающее, ищем только вправо, но пока не
-         * доползли так или иначе далее края текущей строки
-         */
         while (cLine.x2 >= nx2 && currx <= cLine.x2 && currx < (this.cWidth - 1)) {
           currx = 1 + currx;
 
           if (this.isNeededPixel(currx, cLine.y - 1)) {
-            // Сохраняем найденный отрезок
             nx1 = currx;
             nx2 = this.findRightPixel(currx, cLine.y - 1);
             lineQueue.push({ x1: nx1, x2: nx2, y: cLine.y - 1 });
-            // Прыгаем далее найденного
             currx = nx2;
           }
         }
@@ -177,30 +143,21 @@ export default class CanvasFloodFiller {
 
       nx1 = cLine.x1;
       nx2 = cLine.x1;
-      // Так же, но можно ли искать вниз?
       if (cLine.y < (this.cHeight - 1)) {
-        // Снизу строка может идти левее текущей?
         if (this.isNeededPixel(cLine.x1, cLine.y + 1)) {
-          // Ищем в том числе влево
           nx1 = this.findLeftPixel(cLine.x1, cLine.y + 1);
           nx2 = this.findRightPixel(cLine.x1, cLine.y + 1);
           lineQueue.push({ x1: nx1, x2: nx2, y: cLine.y + 1 });
         }
 
         currx = nx2;
-        /**
-         * Добираем недостающее, ищем только вправо, но пока не
-         * доползли так или иначе далее края текущей строки
-         */
         while (cLine.x2 >= nx2 && currx <= cLine.x2 && currx < (this.cWidth - 1)) {
           currx = 1 + currx;
 
           if (this.isNeededPixel(currx, cLine.y + 1)) {
-            // Сохраняем найденный отрезок
             nx1 = currx;
             nx2 = this.findRightPixel(currx, cLine.y + 1);
             lineQueue.push({ x1: nx1, x2: nx2, y: cLine.y + 1 });
-            // Прыгаем далее найденного
             currx = nx2;
           }
         }

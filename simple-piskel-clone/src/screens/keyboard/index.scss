@@ -1,15 +1,10 @@
 .hotkeys-container {
-  // display: flex;
-  // align-items: center;
   padding: 10px 20px 10px;
   border-radius: 15px;
   position: fixed;
-  // position: relative;
   right: calc(50% - 375px);
   top: 30%;
   z-index: 10;
-  // width: 300px;
-  // height: 320px;
   font-size: 2rem;
   text-align: center;
   background: rgba(100, 100, 100, 0.95);
@@ -18,10 +13,8 @@
 }
 
 .hidden {
-  // transition: visibility 300ms;
   visibility: hidden;
   opacity: 0;
-  // transition: opacity 700ms;
 }
 
 .hotkeys-list {

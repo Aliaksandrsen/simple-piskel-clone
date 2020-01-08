@@ -12,3 +12,4 @@
 | January 2 | January 2 | 2h | drag & drop (move) frame implementation |
 | January 5 | January 5 | 3h | change structure of the project |
 | January 5 | January 5 | 2h | add export to apng |
+| January 8 | January 8 | 2h | refactor |

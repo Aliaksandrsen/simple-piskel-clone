@@ -20,7 +20,6 @@
           <h1 class="title">
             Simple piskel clone
           </h1>
-          <!--  ===================================================================================  -->
           <div class="wrapper-auth">
             <div id="my-signin2"></div>
           </div>
@@ -28,7 +27,6 @@
           <script>
             let avatar;
             function onSuccess(googleUser) {
-              // console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
               const profile = googleUser.getBasicProfile();
 
               if (document.querySelector('.ava')) { return };
@@ -70,11 +68,9 @@
                 avatar.remove();
                 document.querySelector('#my-signin2').classList.remove('disp-none');
                 document.querySelector('.sign-out').remove();
-                // console.log('User signed out.');
               });
             }
           </script>
-          <!--  ===================================================================================  -->
         </div>
       </div>
     </header>

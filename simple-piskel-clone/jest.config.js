@@ -30,7 +30,6 @@ module.exports = {
   coveragePathIgnorePatterns: [
     "node_modules",
     "gifLibrary",
-    "fillBucket",
   ],
 
   // A list of reporter names that Jest uses when writing coverage reports

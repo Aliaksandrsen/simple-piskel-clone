@@ -138,12 +138,14 @@ function hintsInit() {
   document.getElementById('chooseColor').setAttribute('title', `${hotkeyChooseColor.value}`);
   document.getElementById('Save').setAttribute('title', `${hotkeySave.value}`);
   document.getElementById('Load').setAttribute('title', `${hotkeyLoad.value}`);
+  document.getElementById('hotKeyMenu').setAttribute('title', `${hotkeyKeyboard.value}`);
   document.getElementById('addNewFrame').setAttribute('title', `${hotkeyAddFrame.value}`);
   document.getElementById('res32').setAttribute('title', `${hotkeyRes1.value}`);
   document.getElementById('res64').setAttribute('title', `${hotkeyRes2.value}`);
   document.getElementById('res128').setAttribute('title', `${hotkeyRes3.value}`);
   document.getElementById('fullScreen').setAttribute('title', `${hotkeyFullScreen.value}`);
   document.getElementById('saveGif').setAttribute('title', `${hotkeyGif.value}`);
+  document.getElementById('saveApng').setAttribute('title', `${hotkeyApng.value}`);
 }
 hintsInit();
 // ================================================================
